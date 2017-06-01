@@ -209,3 +209,4 @@ tempkey.rsa
 
 # exclude binaries
 *.dll
+*.pdb
