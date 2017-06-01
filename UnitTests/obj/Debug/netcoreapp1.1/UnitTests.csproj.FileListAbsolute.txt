@@ -18,3 +18,4 @@ C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Microsoft.Data.Tool
 C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll
 C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Microsoft.Data.Tools.Utilities.dll
 C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Microsoft.SqlServer.TransactSql.ScriptDom.dll
+C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\input.txt

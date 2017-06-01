@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Merchant": {
+      "commandName": "Project",
+      "commandLineArgs": "input.txt"
+    }
+  }
+}

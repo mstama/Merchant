@@ -3,11 +3,12 @@ using Xunit;
 
 namespace UnitTests
 {
-    public class Roman
+    public class RomanNumberConverterTests
     {
         [Fact]
         public void TestDoubles()
         {
+            // Arrange
             string[] inputs = { "II", "XX", "CC", "MM" };
 
             int[] outputs = { 2, 20, 200, 2000 };
@@ -15,7 +16,9 @@ namespace UnitTests
             for (int i = 0; i < inputs.Length; i++)
             {
                 var input = inputs[i];
+                // Act
                 var output = RomanNumberConverter.NumberToInteger(input);
+                // Assert
                 Assert.Equal<int>(outputs[i], output);
             }
         }
@@ -23,12 +26,15 @@ namespace UnitTests
         [Fact]
         public void TestInvalidChar()
         {
+            // Arrange
             string[] inputs = { "IVZ", "IZX", "ZXL" };
 
             for (int i = 0; i < inputs.Length; i++)
             {
                 var input = inputs[i];
+                // Act
                 var output = RomanNumberConverter.NumberToInteger(input);
+                // Assert
                 Assert.Equal<int>(0, output);
             }
         }
@@ -36,7 +42,7 @@ namespace UnitTests
         [Fact]
         public void TestInvalidOrder()
         {
-            //string[] inputs = { "I", "V", "X", "L", "C", "D", "M" };
+            // Arrange
             string[] inputs = { "IL", "IC", "ID", "IM",
                                 "VX", "VL","VC","VD","VM",
                                 "XD","XM",
@@ -46,7 +52,9 @@ namespace UnitTests
             for (int i = 0; i < inputs.Length; i++)
             {
                 var input = inputs[i];
+                // Act
                 var output = RomanNumberConverter.NumberToInteger(input);
+                // Assert
                 Assert.Equal<int>(0, output);
             }
         }
@@ -54,13 +62,15 @@ namespace UnitTests
         [Fact]
         public void TestInvalidRepeatition()
         {
+            // Arrange
             string[] inputs = { "IIII", "VV", "XXXX", "LL", "CCCC", "DD", "MMMM" };
-
 
             for (int i = 0; i < inputs.Length; i++)
             {
                 var input = inputs[i];
+                // Act
                 var output = RomanNumberConverter.NumberToInteger(input);
+                // Assert
                 Assert.Equal<int>(0, output);
             }
         }
@@ -68,6 +78,7 @@ namespace UnitTests
         [Fact]
         public void TestSingles()
         {
+            // Arrange
             string[] inputs = { "I", "V", "X", "L", "C", "D", "M" };
 
             int[] outputs = { 1, 5, 10, 50, 100, 500, 1000 };
@@ -75,7 +86,9 @@ namespace UnitTests
             for (int i = 0; i < inputs.Length; i++)
             {
                 var input = inputs[i];
+                // Act
                 var output = RomanNumberConverter.NumberToInteger(input);
+                // Assert
                 Assert.Equal<int>(outputs[i], output);
             }
         }
@@ -83,6 +96,7 @@ namespace UnitTests
         [Fact]
         public void TestSubtraction()
         {
+            // Arrange
             string[] inputs = { "IV", "IX", "XL", "XC", "CD", "CM" };
 
             int[] outputs = { 4, 9, 40, 90, 400, 900 };
@@ -90,7 +104,9 @@ namespace UnitTests
             for (int i = 0; i < inputs.Length; i++)
             {
                 var input = inputs[i];
+                // Act
                 var output = RomanNumberConverter.NumberToInteger(input);
+                // Assert
                 Assert.Equal<int>(outputs[i], output);
             }
         }
@@ -98,6 +114,7 @@ namespace UnitTests
         [Fact]
         public void TestTriples()
         {
+            // Arrange
             string[] inputs = { "III", "XXX", "CCC", "MMM" };
 
             int[] outputs = { 3, 30, 300, 3000 };
@@ -105,7 +122,9 @@ namespace UnitTests
             for (int i = 0; i < inputs.Length; i++)
             {
                 var input = inputs[i];
+                // Act
                 var output = RomanNumberConverter.NumberToInteger(input);
+                // Assert
                 Assert.Equal<int>(outputs[i], output);
             }
         }
@@ -113,12 +132,15 @@ namespace UnitTests
         [Fact]
         public void OtherInvalidTests()
         {
-            string[] inputs = { "IXI","MDM" };
+            // Arrange
+            string[] inputs = { "IXI", "MDM" };
 
             for (int i = 0; i < inputs.Length; i++)
             {
                 var input = inputs[i];
+                // Act
                 var output = RomanNumberConverter.NumberToInteger(input);
+                // Assert
                 Assert.Equal<int>(0, output);
             }
         }
@@ -126,6 +148,7 @@ namespace UnitTests
         [Fact]
         public void OtherValidTests()
         {
+            // Arrange
             string[] inputs = { "MCMLXXXIV", "MMXVII" };
 
             int[] outputs = { 1984, 2017 };
@@ -133,7 +156,9 @@ namespace UnitTests
             for (int i = 0; i < inputs.Length; i++)
             {
                 var input = inputs[i];
+                // Act
                 var output = RomanNumberConverter.NumberToInteger(input);
+                // Assert
                 Assert.Equal<int>(outputs[i], output);
             }
         }

@@ -6,7 +6,7 @@ using Merchant;
 
 namespace UnitTests
 {
-    public class Custom
+    public class CustomNumberConverterTests
     {
         [Fact]
         public void TestNoMap()
