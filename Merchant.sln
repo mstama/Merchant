@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Merchant", "Merchant\Merchant.csproj", "{3923633F-EE8A-4382-888F-9D8BA5B48049}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{1E953B02-0C40-46D4-BD57-C1B3B0DA0221}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3923633F-EE8A-4382-888F-9D8BA5B48049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3923633F-EE8A-4382-888F-9D8BA5B48049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3923633F-EE8A-4382-888F-9D8BA5B48049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3923633F-EE8A-4382-888F-9D8BA5B48049}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E953B02-0C40-46D4-BD57-C1B3B0DA0221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E953B02-0C40-46D4-BD57-C1B3B0DA0221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E953B02-0C40-46D4-BD57-C1B3B0DA0221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E953B02-0C40-46D4-BD57-C1B3B0DA0221}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
