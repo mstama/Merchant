@@ -11,5 +11,10 @@ namespace Merchant.Commands
             Amount = amount;
         }
         public string Amount { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("How much is {0}?" ,Amount);
+        }
     }
 }

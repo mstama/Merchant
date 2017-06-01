@@ -19,12 +19,13 @@ namespace Merchant
             {
                 if(value.Contains("HOW MUCH IS "))
                 {
-                    string amount = string.Join(" ", words.Skip(3).Take(words.Length - 5));
+                    string amount = string.Join(" ", words.Skip(3).Take(words.Length - 4));
                     return new MuchQueryCommand(amount);
                 }
                 if(value.Contains("HOW MANY CREDITS IS ")) {
                     string commodity = words[words.Length - 2];
                     string amount = string.Join(" ", words.Skip(4).Take(words.Length - 6));
+                    return new ManyQueryCommand(commodity, amount);
                 }
             }
             else //Its a Mapping-Rate
@@ -33,7 +34,7 @@ namespace Merchant
                 if (value.Contains("CREDITS")){
                     int credit = int.Parse(words[words.Length - 2]);
                     string commodity = words[words.Length - 4];
-                    string amount = string.Join(" ",words.Take(words.Length - 5));
+                    string amount = string.Join(" ",words.Take(words.Length - 4));
                     return new RateCommand(commodity, amount, credit);
                 }
                 else
@@ -41,7 +42,7 @@ namespace Merchant
                     return new MapCommand(words[0], words[2]);
                 }
             }
-            return new UnknownCommand();
+            return new UnknownCommand(value);
         }
     }
 }

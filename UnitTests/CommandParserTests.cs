@@ -18,6 +18,9 @@ namespace UnitTests
             var output = CommandParser.Parse(input);
             // Assert
             Assert.IsType<MapCommand>(output);
+            var final = output as MapCommand;
+            Assert.Equal<string>("GLOB", final.From);
+            Assert.Equal<string>("I", final.To);
         }
 
         [Fact]
@@ -29,6 +32,10 @@ namespace UnitTests
             var output = CommandParser.Parse(input);
             // Assert
             Assert.IsType<RateCommand>(output);
+            var final = output as RateCommand;
+            Assert.Equal<string>("GLOB GLOB", final.Amount);
+            Assert.Equal<String>("SILVER", final.Commodity);
+            Assert.Equal<int>(34, final.CreditValue);
         }
 
         [Fact]
@@ -40,6 +47,8 @@ namespace UnitTests
             var output = CommandParser.Parse(input);
             // Assert
             Assert.IsType<MuchQueryCommand>(output);
+            var final = output as MuchQueryCommand;
+            Assert.Equal<string>("PISH TEGJ GLOB GLOB", final.Amount);
         }
 
         [Fact]
@@ -51,6 +60,9 @@ namespace UnitTests
             var output = CommandParser.Parse(input);
             // Assert
             Assert.IsType<ManyQueryCommand>(output);
+            var final = output as ManyQueryCommand;
+            Assert.Equal<string>("GLOB PROK", final.Amount);
+            Assert.Equal<string>("IRON", final.Commodity);
         }
 
         [Fact]
