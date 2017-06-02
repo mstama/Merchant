@@ -1,4 +1,5 @@
 using Merchant;
+using Merchant.Converters;
 using Xunit;
 
 namespace UnitTests

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using Merchant;
+using Merchant.Converters;
 
 namespace UnitTests
 {
@@ -15,9 +16,9 @@ namespace UnitTests
             var target = new CustomNumberConverter();
             var input = "M C M L X X X I V";
             // Act
-            var output = target.NumberToInteger(input);
+            var output = target.NumberToRoman(input);
             // Assert
-            Assert.Equal<int>(1984, output);
+            Assert.Equal<string>("MCMLXXXIV", output);
         }
 
         [Fact]
@@ -33,9 +34,9 @@ namespace UnitTests
             target.AddMap("sala", "V");
             var input = "ping pong ping abra cadabra cadabra cadabra sin sala";
             // Act
-            var output = target.NumberToInteger(input);
+            var output = target.NumberToRoman(input);
             // Assert
-            Assert.Equal<int>(1984, output);
+            Assert.Equal<string>("MCMLXXXIV", output);
         }
     }
 }
