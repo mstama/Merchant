@@ -12,8 +12,8 @@ namespace Merchant
 
         public static Command Parse(string value)
         {
-            value = value.ToUpperInvariant();
             var words = value.Split(_separator, StringSplitOptions.RemoveEmptyEntries);
+            value = value.ToUpperInvariant();
             //It is a query
             if (value.Contains("?"))
             {

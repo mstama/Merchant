@@ -19,7 +19,7 @@ namespace UnitTests
             // Assert
             Assert.IsType<MapCommand>(output);
             var final = output as MapCommand;
-            Assert.Equal<string>("GLOB", final.From);
+            Assert.Equal<string>("glob", final.From);
             Assert.Equal<string>("I", final.To);
         }
 
@@ -33,8 +33,8 @@ namespace UnitTests
             // Assert
             Assert.IsType<RateCommand>(output);
             var final = output as RateCommand;
-            Assert.Equal<string>("GLOB GLOB", final.Amount);
-            Assert.Equal<String>("SILVER", final.Commodity);
+            Assert.Equal<string>("glob glob", final.Amount);
+            Assert.Equal<String>("Silver", final.Commodity);
             Assert.Equal<int>(34, final.CreditValue);
         }
 
@@ -48,7 +48,7 @@ namespace UnitTests
             // Assert
             Assert.IsType<MuchQueryCommand>(output);
             var final = output as MuchQueryCommand;
-            Assert.Equal<string>("PISH TEGJ GLOB GLOB", final.Amount);
+            Assert.Equal<string>("pish tegj glob glob", final.Amount);
         }
 
         [Fact]
@@ -61,8 +61,8 @@ namespace UnitTests
             // Assert
             Assert.IsType<ManyQueryCommand>(output);
             var final = output as ManyQueryCommand;
-            Assert.Equal<string>("GLOB PROK", final.Amount);
-            Assert.Equal<string>("IRON", final.Commodity);
+            Assert.Equal<string>("glob prok", final.Amount);
+            Assert.Equal<string>("Iron", final.Commodity);
         }
 
         [Fact]
