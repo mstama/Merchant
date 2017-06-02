@@ -13,9 +13,4 @@ C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Merchant.dll
 C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Merchant.pdb
 C:\code\Challenge\Merchant\UnitTests\obj\Debug\netcoreapp1.1\UnitTests.csprojResolveAssemblyReference.cache
 C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\UnitTests.dll.config
-C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Microsoft.Data.Tools.Schema.Sql.dll
-C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll
-C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll
-C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Microsoft.Data.Tools.Utilities.dll
-C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\Microsoft.SqlServer.TransactSql.ScriptDom.dll
 C:\code\Challenge\Merchant\UnitTests\bin\Debug\netcoreapp1.1\input.txt
