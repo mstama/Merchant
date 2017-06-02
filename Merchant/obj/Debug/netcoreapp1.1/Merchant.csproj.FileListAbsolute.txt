@@ -7,3 +7,4 @@ C:\code\Challenge\Merchant\Merchant\obj\Debug\netcoreapp1.1\Merchant.AssemblyInf
 C:\code\Challenge\Merchant\Merchant\obj\Debug\netcoreapp1.1\Merchant.dll
 C:\code\Challenge\Merchant\Merchant\obj\Debug\netcoreapp1.1\Merchant.pdb
 C:\code\Challenge\Merchant\Merchant\bin\Debug\netcoreapp1.1\input.txt
+C:\code\Challenge\Merchant\Merchant\obj\Debug\netcoreapp1.1\Merchant.csprojResolveAssemblyReference.cache
