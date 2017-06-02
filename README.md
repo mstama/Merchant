@@ -26,9 +26,18 @@ dotnet Merchant.dll input.txt
 
 The solution is composed of:
 
-* Converters : Responsible to convert the different number formats.
-* Parser
-* Command
-* Calculators
+* Converters : Responsible for converting the different number formats.
+* Parser     : Responsible for creating commands from the user input.
+* Command    : Meaningful information used to perform actions.
+* Calculators: Responsible for calculating value of commodity.
+
+The main program is composed of:
+
+* Composition Root: where all modules are put together
+* Actions that are performed depending on commands
+
+Highlights:
+* Extensibility: main modules are provided with an interface so it can be replaced in the composition root for evolution.
+* Separation of concerns
 
 
