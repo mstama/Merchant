@@ -3,14 +3,15 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using Merchant.Interfaces;
 
 namespace Merchant
 {
-    public static class CommandParser
+    public class CommandParser : ICommandParser
     {
         private static char[] _separator = new char[] { ' ' };
 
-        public static Command Parse(string value)
+        public Command Parse(string value)
         {
             var words = value.Split(_separator, StringSplitOptions.RemoveEmptyEntries);
             value = value.ToUpperInvariant();

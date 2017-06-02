@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
+using Merchant.Interfaces;
 
 namespace Merchant.Converters
 {
-    public static class RomanNumberConverter
+    /// <summary>
+    /// Knows how to convert romans to integer
+    /// </summary>
+    public class RomanNumberConverter : IConverter<string, int>
     {
         // Number mapping
-        public static int NumberToInteger(string value)
+        public int Convert(string value)
         {
             var numbers = value.ToCharArray();
             var romans = new RomanNumber[numbers.Length];

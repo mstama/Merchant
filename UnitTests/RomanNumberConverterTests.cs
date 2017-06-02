@@ -6,6 +6,7 @@ namespace UnitTests
 {
     public class RomanNumberConverterTests
     {
+        RomanNumberConverter target = new RomanNumberConverter();
         [Fact]
         public void TestDoubles()
         {
@@ -18,7 +19,7 @@ namespace UnitTests
             {
                 var input = inputs[i];
                 // Act
-                var output = RomanNumberConverter.NumberToInteger(input);
+                var output = target.Convert(input);
                 // Assert
                 Assert.Equal<int>(outputs[i], output);
             }
@@ -34,7 +35,7 @@ namespace UnitTests
             {
                 var input = inputs[i];
                 // Act
-                var output = RomanNumberConverter.NumberToInteger(input);
+                var output = target.Convert(input);
                 // Assert
                 Assert.Equal<int>(0, output);
             }
@@ -54,7 +55,7 @@ namespace UnitTests
             {
                 var input = inputs[i];
                 // Act
-                var output = RomanNumberConverter.NumberToInteger(input);
+                var output = target.Convert(input);
                 // Assert
                 Assert.Equal<int>(0, output);
             }
@@ -70,7 +71,7 @@ namespace UnitTests
             {
                 var input = inputs[i];
                 // Act
-                var output = RomanNumberConverter.NumberToInteger(input);
+                var output = target.Convert(input);
                 // Assert
                 Assert.Equal<int>(0, output);
             }
@@ -88,7 +89,7 @@ namespace UnitTests
             {
                 var input = inputs[i];
                 // Act
-                var output = RomanNumberConverter.NumberToInteger(input);
+                var output = target.Convert(input);
                 // Assert
                 Assert.Equal<int>(outputs[i], output);
             }
@@ -106,7 +107,7 @@ namespace UnitTests
             {
                 var input = inputs[i];
                 // Act
-                var output = RomanNumberConverter.NumberToInteger(input);
+                var output = target.Convert(input);
                 // Assert
                 Assert.Equal<int>(outputs[i], output);
             }
@@ -124,7 +125,7 @@ namespace UnitTests
             {
                 var input = inputs[i];
                 // Act
-                var output = RomanNumberConverter.NumberToInteger(input);
+                var output = target.Convert(input);
                 // Assert
                 Assert.Equal<int>(outputs[i], output);
             }
@@ -140,7 +141,7 @@ namespace UnitTests
             {
                 var input = inputs[i];
                 // Act
-                var output = RomanNumberConverter.NumberToInteger(input);
+                var output = target.Convert(input);
                 // Assert
                 Assert.Equal<int>(0, output);
             }
@@ -158,7 +159,7 @@ namespace UnitTests
             {
                 var input = inputs[i];
                 // Act
-                var output = RomanNumberConverter.NumberToInteger(input);
+                var output = target.Convert(input);
                 // Assert
                 Assert.Equal<int>(outputs[i], output);
             }

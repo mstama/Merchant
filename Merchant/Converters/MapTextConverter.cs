@@ -1,15 +1,19 @@
-﻿using System;
+﻿using Merchant.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Merchant.Converters
 {
-    public class CustomNumberConverter
+    /// <summary>
+    /// Provides text converted with the mapped entries
+    /// </summary>
+    public class MapTextConverter : IMapConverter<string, string>
     {
-        private Dictionary<string, string> _dict = new Dictionary<string, string>();
-        private static char[] _separator = new char[]{' '};
+        private Dictionary<string, string> _dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        private readonly static char[] _separator = new char[]{' '};
 
-        public string NumberToRoman(string value)
+        public string Convert(string value)
         {
             var numbers = value.Split(_separator, StringSplitOptions.RemoveEmptyEntries);
             StringBuilder output = new StringBuilder();
@@ -27,9 +31,9 @@ namespace Merchant.Converters
             return output.ToString();
         }
 
-        public void AddMap(string fromValue, string toValue)
+        public void AddMap(string from, string target)
         {
-            _dict.Add(fromValue, toValue);
+            _dict.Add(from, target);
         }
     }
 }

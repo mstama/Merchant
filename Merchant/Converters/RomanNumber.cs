@@ -1,17 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Merchant.Converters
 {
+    /// <summary>
+    /// Provides Roman Number representation and associated meta-data
+    /// </summary>
     public abstract class RomanNumber
     {
-        public char Number { get; protected set; }
-        public bool Repeat { get; protected set; }
-        public int Value { get; protected set; }
-        protected int Previous { get; set; } = 0;
-        protected bool CanSubtract { get; set; } = true;
+        private bool _subtract = false;
 
+        /// <summary>
+        /// Representation in char 'I', 'V',...
+        /// </summary>
+        public char Number { get; protected set; }
+
+        /// <summary>
+        /// If can be used in repetition: II, XX,...
+        /// </summary>
+        public bool Repeat { get; protected set; }
+
+        /// <summary>
+        /// If it is used for subtraction notation: IV, IX, XL,...
+        /// </summary>
         public bool Subtract
         {
             get
@@ -24,18 +35,26 @@ namespace Merchant.Converters
             }
         }
 
-        private bool _subtract = false;
-        public virtual bool PreviousSubtract(RomanNumber number)
-        {
-            if (number == null || number.Value != Previous) return false;
-            return true;
-        }
+        /// <summary>
+        /// Integer value: I:1, V:5, X:10
+        /// </summary>
+        public int Value { get; protected set; }
 
-        public override bool Equals(object obj)
+        /// <summary>
+        /// If the number is allowed to subtract: I:true, V:false
+        /// </summary>
+        protected bool CanSubtract { get; set; } = true;
+
+        /// <summary>
+        /// Number that can subtract.
+        /// </summary>
+        protected char Previous { get; set; } = ' ';
+
+        public static bool operator <(RomanNumber a, RomanNumber b)
         {
-            var number = obj as RomanNumber;
-            if (number == null) return false;
-            return Value==number.Value;
+            if (b == null) return false;
+            if (a == null) return true;
+            return a.Value < b.Value;
         }
 
         public static bool operator >(RomanNumber a, RomanNumber b)
@@ -45,60 +64,22 @@ namespace Merchant.Converters
             return a.Value > b.Value;
         }
 
-        public static bool operator <(RomanNumber a, RomanNumber b)
+        public override bool Equals(object obj)
         {
-            if (b == null) return false;
-            if (a == null) return true;
-            return a.Value < b.Value;
+            var number = obj as RomanNumber;
+            if (number == null) return false;
+            return Value == number.Value;
         }
 
         public override int GetHashCode()
         {
             return Value;
         }
-    }
-    public class RomanNumberI : RomanNumber
-    {
-        public RomanNumberI()
-        {
-            Number = 'I';
-            Repeat = true;
-            Value = 1;
-        }
-    }
 
-    public class RomanNumberV : RomanNumber
-    {
-        public RomanNumberV()
+        public virtual bool PreviousSubtract(RomanNumber number)
         {
-            Number = 'V';
-            Repeat = false;
-            Value = 5;
-            Previous = 1;
-            CanSubtract = false;
-        }
-    }
-
-    public class RomanNumberX : RomanNumber
-    {
-        public RomanNumberX()
-        {
-            Number = 'X';
-            Repeat = true;
-            Value = 10;
-            Previous = 1;
-        }
-    }
-
-    public class RomanNumberL : RomanNumber
-    {
-        public RomanNumberL()
-        {
-            Number = 'L';
-            Repeat = false;
-            Value = 50;
-            Previous = 10;
-            CanSubtract = false;
+            if (number == null || number.Number != Previous) return false;
+            return true;
         }
     }
 
@@ -109,7 +90,7 @@ namespace Merchant.Converters
             Number = 'C';
             Repeat = true;
             Value = 100;
-            Previous = 10;
+            Previous = 'X';
         }
     }
 
@@ -120,7 +101,29 @@ namespace Merchant.Converters
             Number = 'D';
             Repeat = false;
             Value = 500;
-            Previous = 100;
+            Previous = 'C';
+            CanSubtract = false;
+        }
+    }
+
+    public class RomanNumberI : RomanNumber
+    {
+        public RomanNumberI()
+        {
+            Number = 'I';
+            Repeat = true;
+            Value = 1;
+        }
+    }
+
+    public class RomanNumberL : RomanNumber
+    {
+        public RomanNumberL()
+        {
+            Number = 'L';
+            Repeat = false;
+            Value = 50;
+            Previous = 'X';
             CanSubtract = false;
         }
     }
@@ -132,35 +135,30 @@ namespace Merchant.Converters
             Number = 'M';
             Repeat = true;
             Value = 1000;
-            Previous = 100;
+            Previous = 'C';
         }
     }
 
-    public static class RomanNumberFactory
+    public class RomanNumberV : RomanNumber
     {
-        private static Dictionary<char, Func<RomanNumber>> _dict = new Dictionary<char, Func<RomanNumber>>();
-
-        static RomanNumberFactory()
+        public RomanNumberV()
         {
-            _dict['I'] = () => new RomanNumberI();
-            _dict['V'] = () => new RomanNumberV();
-            _dict['X'] = () => new RomanNumberX();
-            _dict['L'] = () => new RomanNumberL();
-            _dict['C'] = () => new RomanNumberC();
-            _dict['D'] = () => new RomanNumberD();
-            _dict['M'] = () => new RomanNumberM();
+            Number = 'V';
+            Repeat = false;
+            Value = 5;
+            Previous = 'I';
+            CanSubtract = false;
         }
+    }
 
-        public static RomanNumber Create(char number)
+    public class RomanNumberX : RomanNumber
+    {
+        public RomanNumberX()
         {
-            if (_dict.ContainsKey(number))
-            {
-                return _dict[number]();
-            }
-            else
-            {
-                return null;
-            }
+            Number = 'X';
+            Repeat = true;
+            Value = 10;
+            Previous = 'I';
         }
     }
 }

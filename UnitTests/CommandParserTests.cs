@@ -9,13 +9,15 @@ namespace UnitTests
 {
     public class CommandParserTests
     {
+        CommandParser target = new CommandParser();
+
         [Fact]
         public void TestMapCommand()
         {
             // Arrange
             string input = "glob is I";
             // Act
-            var output = CommandParser.Parse(input);
+            var output = target.Parse(input);
             // Assert
             Assert.IsType<MapCommand>(output);
             var final = output as MapCommand;
@@ -29,7 +31,7 @@ namespace UnitTests
             // Arrange
             string input = "glob glob Silver is 34 Credits";
             // Act
-            var output = CommandParser.Parse(input);
+            var output = target.Parse(input);
             // Assert
             Assert.IsType<RateCommand>(output);
             var final = output as RateCommand;
@@ -44,7 +46,7 @@ namespace UnitTests
             // Arrange
             string input = "how much is pish tegj glob glob ?";
             // Act
-            var output = CommandParser.Parse(input);
+            var output = target.Parse(input);
             // Assert
             Assert.IsType<MuchQueryCommand>(output);
             var final = output as MuchQueryCommand;
@@ -57,7 +59,7 @@ namespace UnitTests
             // Arrange
             string input = "how many Credits is glob prok Iron ?";
             // Act
-            var output = CommandParser.Parse(input);
+            var output = target.Parse(input);
             // Assert
             Assert.IsType<ManyQueryCommand>(output);
             var final = output as ManyQueryCommand;
@@ -71,7 +73,7 @@ namespace UnitTests
             // Arrange
             string input = "how much wood could a woodchuck chuck if a woodchuck could chuck wood ?";
             // Act
-            var output = CommandParser.Parse(input);
+            var output = target.Parse(input);
             // Assert
             Assert.IsType<UnknownCommand>(output);
         }
