@@ -135,7 +135,7 @@ namespace UnitTests
         public void OtherInvalidTests()
         {
             // Arrange
-            string[] inputs = { "IXI", "MDM", "IXX" };
+            string[] inputs = { "IXI", "MDM", "IXX", "IIX" };
 
             for (int i = 0; i < inputs.Length; i++)
             {

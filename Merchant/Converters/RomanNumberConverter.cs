@@ -22,6 +22,17 @@ namespace Merchant.Converters
                 // If number is not mapped
                 if (roman == null|| subtracts.Contains(roman.Number)) return 0;
 
+                // Rule Subtraction
+                if (roman.PreviousSubtract(previous))
+                {
+                    // In repeat there are no subtraction
+                    if (repeat > 1) return 0;
+                    previous.Subtract = true;
+                    // Number that are used to subtract can not repeat
+                    subtracts.Add(previous.Number);
+                    subtracts.Add(roman.Number);
+                }
+
                 // Rule 3 times only
                 if (roman.Equals(previous))
                 {
@@ -31,15 +42,6 @@ namespace Merchant.Converters
                 else
                 {
                     repeat = 1;
-                }
-
-                // Rule Subtraction
-                if (roman.PreviousSubtract(previous))
-                {
-                    previous.Subtract = true;
-                    // Number that are used to subtract can not repeat
-                    subtracts.Add(previous.Number);
-                    subtracts.Add(roman.Number);
                 }
 
                 // invalid order
