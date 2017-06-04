@@ -13,35 +13,33 @@ namespace Merchant.Converters
         {
             var numbers = value.ToCharArray();
             var romans = new RomanNumber[numbers.Length];
+            // List of romans that were used to subtract
             var subtracts = new HashSet<char>();
             RomanNumber previous = null;
-            int repeat = 0;
+
             for (int i = 0; i < numbers.Length; i++)
             {
                 var roman = RomanNumberFactory.Create(numbers[i]);
+
                 // If number is not mapped
-                if (roman == null|| subtracts.Contains(roman.Number)) return 0;
+                if (roman == null|| subtracts.Contains(roman.Symbol)) return 0;
 
                 // Rule Subtraction
                 if (roman.PreviousSubtract(previous))
                 {
                     // In repeat there are no subtraction
-                    if (repeat > 1) return 0;
+                    if (previous.Sequential > 1) return 0;
                     previous.Subtract = true;
                     // Number that are used to subtract can not repeat
-                    subtracts.Add(previous.Number);
-                    subtracts.Add(roman.Number);
+                    subtracts.Add(previous.Symbol);
+                    subtracts.Add(roman.Symbol);
                 }
 
                 // Rule 3 times only
                 if (roman.Equals(previous))
                 {
-                    repeat++;
-                    if (repeat > 3 || !roman.Repeat) return 0;
-                }
-                else
-                {
-                    repeat = 1;
+                    roman.Sequential+=previous.Sequential;
+                    if (roman.Sequential > 3 || !roman.Repeat) return 0;
                 }
 
                 // invalid order
@@ -56,8 +54,10 @@ namespace Merchant.Converters
                 romans[i] = roman;
                 previous = roman;
             }
+
             int total = 0;
-            // summ all
+            
+            // sum all
             foreach (var roman in romans)
             {
                 if (roman.Subtract)

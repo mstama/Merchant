@@ -11,14 +11,14 @@ namespace Merchant.Converters
         private bool _subtract = false;
 
         /// <summary>
-        /// Representation in char 'I', 'V',...
-        /// </summary>
-        public char Number { get; protected set; }
-
-        /// <summary>
         /// If can be used in repetition: II, XX,...
         /// </summary>
         public bool Repeat { get; protected set; }
+
+        /// <summary>
+        /// Number of sequential repetitions
+        /// </summary>
+        public int Sequential { get; set; } = 1;
 
         /// <summary>
         /// If it is used for subtraction notation: IV, IX, XL,...
@@ -36,6 +36,11 @@ namespace Merchant.Converters
         }
 
         /// <summary>
+        /// Representation in char 'I', 'V',...
+        /// </summary>
+        public char Symbol { get; protected set; }
+
+        /// <summary>
         /// Integer value: I:1, V:5, X:10
         /// </summary>
         public int Value { get; protected set; }
@@ -48,7 +53,7 @@ namespace Merchant.Converters
         /// <summary>
         /// Number that can subtract.
         /// </summary>
-        protected char Previous { get; set; } = ' ';
+        protected char Less { get; set; } = ' ';
 
         public static bool operator <(RomanNumber a, RomanNumber b)
         {
@@ -78,7 +83,7 @@ namespace Merchant.Converters
 
         public virtual bool PreviousSubtract(RomanNumber number)
         {
-            if (number == null || number.Number != Previous) return false;
+            if (number == null || number.Symbol != Less) return false;
             return true;
         }
     }
@@ -87,10 +92,10 @@ namespace Merchant.Converters
     {
         public RomanNumberC()
         {
-            Number = 'C';
+            Symbol = 'C';
             Repeat = true;
             Value = 100;
-            Previous = 'X';
+            Less = 'X';
         }
     }
 
@@ -98,10 +103,10 @@ namespace Merchant.Converters
     {
         public RomanNumberD()
         {
-            Number = 'D';
+            Symbol = 'D';
             Repeat = false;
             Value = 500;
-            Previous = 'C';
+            Less = 'C';
             CanSubtract = false;
         }
     }
@@ -110,7 +115,7 @@ namespace Merchant.Converters
     {
         public RomanNumberI()
         {
-            Number = 'I';
+            Symbol = 'I';
             Repeat = true;
             Value = 1;
         }
@@ -120,10 +125,10 @@ namespace Merchant.Converters
     {
         public RomanNumberL()
         {
-            Number = 'L';
+            Symbol = 'L';
             Repeat = false;
             Value = 50;
-            Previous = 'X';
+            Less = 'X';
             CanSubtract = false;
         }
     }
@@ -132,10 +137,10 @@ namespace Merchant.Converters
     {
         public RomanNumberM()
         {
-            Number = 'M';
+            Symbol = 'M';
             Repeat = true;
             Value = 1000;
-            Previous = 'C';
+            Less = 'C';
         }
     }
 
@@ -143,10 +148,10 @@ namespace Merchant.Converters
     {
         public RomanNumberV()
         {
-            Number = 'V';
+            Symbol = 'V';
             Repeat = false;
             Value = 5;
-            Previous = 'I';
+            Less = 'I';
             CanSubtract = false;
         }
     }
@@ -155,10 +160,10 @@ namespace Merchant.Converters
     {
         public RomanNumberX()
         {
-            Number = 'X';
+            Symbol = 'X';
             Repeat = true;
             Value = 10;
-            Previous = 'I';
+            Less = 'I';
         }
     }
 }
