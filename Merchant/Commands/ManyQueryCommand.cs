@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Merchant.Interfaces;
 
 namespace Merchant.Commands
 {
@@ -16,6 +17,11 @@ namespace Merchant.Commands
         public override string ToString()
         {
             return string.Format("How many Credits is {0} {1}", Amount, Commodity);
+        }
+
+        public override void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

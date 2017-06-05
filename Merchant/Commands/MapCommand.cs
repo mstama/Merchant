@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Merchant.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,6 +17,11 @@ namespace Merchant.Commands
         public override string ToString()
         {
             return string.Format("{0} is {1}", From, To);
+        }
+
+        public override void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

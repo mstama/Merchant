@@ -79,7 +79,14 @@ namespace Merchant.Converters
                 // If is subtraction
                 if (Previous.Symbol == Less)
                 {
-                    Order -= 2;
+                    if (Order == Previous.Order)
+                    {
+                        Order--;
+                    }
+                    else
+                    {
+                        Order -= 2;
+                    }
                     Previous.Subtract = true;
                     Previous.Calculate();
                 }

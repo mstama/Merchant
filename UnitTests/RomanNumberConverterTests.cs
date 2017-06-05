@@ -135,7 +135,7 @@ namespace UnitTests
         public void OtherInvalidTests()
         {
             // Arrange
-            string[] inputs = { "IXI", "MDM", "IXX", "IIX", "IXV" };
+            string[] inputs = { "IXI", "MDM", "IXX", "IIX", "IXV", "XCC" };
 
             for (int i = 0; i < inputs.Length; i++)
             {
@@ -151,9 +151,9 @@ namespace UnitTests
         public void OtherValidTests()
         {
             // Arrange
-            string[] inputs = { "MCMLXXXIV", "MMXVII", "MCMXCIV" };
+            string[] inputs = { "MCMLXXXIV", "MMXVII", "MCMXCIV", "XLII" };
 
-            int[] outputs = { 1984, 2017, 1994 };
+            int[] outputs = { 1984, 2017, 1994, 42 };
 
             for (int i = 0; i < inputs.Length; i++)
             {
