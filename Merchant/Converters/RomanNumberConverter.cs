@@ -14,62 +14,18 @@ namespace Merchant.Converters
             var numbers = value.ToCharArray();
             var romans = new RomanNumber[numbers.Length];
             // List of romans that were used to subtract
-            var subtracts = new HashSet<char>();
             RomanNumber previous = null;
-
             for (int i = 0; i < numbers.Length; i++)
             {
                 var roman = RomanNumberFactory.Create(numbers[i]);
 
                 // If number is not mapped
-                if (roman == null|| subtracts.Contains(roman.Symbol)) return 0;
-
-                // Rule Subtraction
-                if (roman.PreviousSubtract(previous))
-                {
-                    // In repeat there are no subtraction
-                    if (previous.Sequential > 1) return 0;
-                    previous.Subtract = true;
-                    // Number that are used to subtract can not repeat
-                    subtracts.Add(previous.Symbol);
-                    subtracts.Add(roman.Symbol);
-                }
-
-                // Rule 3 times only
-                if (roman.Equals(previous))
-                {
-                    roman.Sequential+=previous.Sequential;
-                    if (roman.Sequential > 3 || !roman.Repeat) return 0;
-                }
-
-                // invalid order
-                if (i > 0)
-                {
-                    if (roman > previous && !previous.Subtract)
-                    {
-                        return 0;
-                    }
-                }
-
-                romans[i] = roman;
+                if (roman == null) return 0;
+                roman.AddPrevious(previous);
                 previous = roman;
             }
 
-            int total = 0;
-            
-            // sum all
-            foreach (var roman in romans)
-            {
-                if (roman.Subtract)
-                {
-                    total -= roman.Value;
-                }
-                else
-                {
-                    total += roman.Value;
-                }
-            }
-            return total;
+            return previous.SubTotal;
         }
     }
 }

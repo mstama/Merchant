@@ -8,7 +8,10 @@ namespace Merchant.Converters
     /// </summary>
     public abstract class RomanNumber
     {
-        private bool _subtract = false;
+        /// <summary>
+        /// Holds the previous number
+        /// </summary>
+        public RomanNumber Previous { get; set; }
 
         /// <summary>
         /// If can be used in repetition: II, XX,...
@@ -21,19 +24,13 @@ namespace Merchant.Converters
         public int Sequential { get; set; } = 1;
 
         /// <summary>
+        /// Contains the subtotal value
+        /// </summary>
+        public int SubTotal { get; set; }
+        /// <summary>
         /// If it is used for subtraction notation: IV, IX, XL,...
         /// </summary>
-        public bool Subtract
-        {
-            get
-            {
-                return _subtract;
-            }
-            set
-            {
-                if (CanSubtract) _subtract = value;
-            }
-        }
+        public bool Subtract { get; set; }
 
         /// <summary>
         /// Representation in char 'I', 'V',...
@@ -46,15 +43,14 @@ namespace Merchant.Converters
         public int Value { get; protected set; }
 
         /// <summary>
-        /// If the number is allowed to subtract: I:true, V:false
-        /// </summary>
-        protected bool CanSubtract { get; set; } = true;
-
-        /// <summary>
         /// Number that can subtract.
         /// </summary>
         protected char Less { get; set; } = ' ';
 
+        /// <summary>
+        /// Order used to control valid after subtraction
+        /// </summary>
+        protected int Order { get; set; }
         public static bool operator <(RomanNumber a, RomanNumber b)
         {
             if (b == null) return false;
@@ -69,6 +65,33 @@ namespace Merchant.Converters
             return a.Value > b.Value;
         }
 
+        /// <summary>
+        /// Add the previous number
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public virtual int AddPrevious(RomanNumber number)
+        {
+            Previous = number;
+
+            if (Previous != null)
+            {
+                // If is subtraction
+                if (Previous.Symbol == Less)
+                {
+                    Order -= 2;
+                    Previous.Subtract = true;
+                    Previous.Calculate();
+                }
+
+                if (this.Equals(Previous))
+                {
+                    Sequential += Previous.Sequential;
+                }
+            }
+            return Calculate();
+        }
+
         public override bool Equals(object obj)
         {
             var number = obj as RomanNumber;
@@ -80,10 +103,42 @@ namespace Merchant.Converters
         {
             return Value;
         }
-
-        public virtual bool PreviousSubtract(RomanNumber number)
+        /// <summary>
+        /// Calculate the SubTotal
+        /// </summary>
+        /// <returns></returns>
+        private int Calculate()
         {
-            if (number == null || number.Symbol != Less) return false;
+            SubTotal = Previous == null ? 0 : Previous.SubTotal;
+
+            if (!Validate())
+            {
+                SubTotal = 0;
+                return SubTotal;
+            }
+
+            if (Subtract)
+            {
+                SubTotal -= Value;
+            }
+            else
+            {
+                SubTotal += Value;
+            }
+
+            return SubTotal;
+        }
+
+        /// <summary>
+        /// Validate roman number
+        /// </summary>
+        /// <returns></returns>
+        private bool Validate()
+        {
+            if (Sequential > 3 || (Sequential > 1 && !Repeat)) return false;
+            if (Subtract && Sequential > 1) return false;
+            if (Previous != null && Order > Previous.Order) return false;
+            if (Previous != null && Previous.SubTotal == 0) return false;
             return true;
         }
     }
@@ -96,6 +151,7 @@ namespace Merchant.Converters
             Repeat = true;
             Value = 100;
             Less = 'X';
+            Order = 3;
         }
     }
 
@@ -107,7 +163,7 @@ namespace Merchant.Converters
             Repeat = false;
             Value = 500;
             Less = 'C';
-            CanSubtract = false;
+            Order = 3;
         }
     }
 
@@ -118,6 +174,7 @@ namespace Merchant.Converters
             Symbol = 'I';
             Repeat = true;
             Value = 1;
+            Order = 1;
         }
     }
 
@@ -129,7 +186,7 @@ namespace Merchant.Converters
             Repeat = false;
             Value = 50;
             Less = 'X';
-            CanSubtract = false;
+            Order = 2;
         }
     }
 
@@ -141,6 +198,7 @@ namespace Merchant.Converters
             Repeat = true;
             Value = 1000;
             Less = 'C';
+            Order = 4;
         }
     }
 
@@ -152,7 +210,7 @@ namespace Merchant.Converters
             Repeat = false;
             Value = 5;
             Less = 'I';
-            CanSubtract = false;
+            Order = 1;
         }
     }
 
@@ -164,6 +222,7 @@ namespace Merchant.Converters
             Repeat = true;
             Value = 10;
             Less = 'I';
+            Order = 2;
         }
     }
 }
