@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Merchant.Converters
+﻿namespace Merchant.Converters
 {
     /// <summary>
     /// Provides Roman Number representation and associated meta-data
@@ -27,6 +24,7 @@ namespace Merchant.Converters
         /// Contains the subtotal value
         /// </summary>
         public int SubTotal { get; set; }
+
         /// <summary>
         /// If it is used for subtraction notation: IV, IX, XL,...
         /// </summary>
@@ -51,6 +49,7 @@ namespace Merchant.Converters
         /// Order used to control valid after subtraction
         /// </summary>
         protected int Order { get; set; }
+
         public static bool operator <(RomanNumber a, RomanNumber b)
         {
             if (b == null) return false;
@@ -110,6 +109,7 @@ namespace Merchant.Converters
         {
             return Value;
         }
+
         /// <summary>
         /// Calculate the SubTotal
         /// </summary>

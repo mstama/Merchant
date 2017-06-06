@@ -1,10 +1,10 @@
 ﻿using Merchant.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Merchant.Commands
 {
+    /// <summary>
+    /// Command for rate
+    /// </summary>
     public class RateCommand : Command
     {
         public RateCommand(string commodity, string amount, int creditValue)
@@ -13,17 +13,30 @@ namespace Merchant.Commands
             Amount = amount;
             CreditValue = creditValue;
         }
-        public int CreditValue { get; set; }
-        public string Commodity { get; set; }
+
+        /// <summary>
+        /// Amount in text
+        /// </summary>
         public string Amount { get; set; }
+
+        /// <summary>
+        /// Name of the commodity
+        /// </summary>
+        public string Commodity { get; set; }
+
+        /// <summary>
+        /// Value in credits
+        /// </summary>
+        public int CreditValue { get; set; }
+
+        public override void Accept(ICommandVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
         public override string ToString()
         {
             return string.Format("{0} {1} is {2} Credits", Amount, Commodity, CreditValue);
-        }
-
-        public override void Accept(IVisitor visitor)
-        {
-            visitor.Visit(this);
         }
     }
 }

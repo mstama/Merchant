@@ -8,7 +8,7 @@ namespace Merchant
     internal class Program
     {
         private static ICommandParser parser;
-        private static IVisitor visitor;
+        private static ICommandVisitor visitor;
 
         // Composition root
         private static void Init()

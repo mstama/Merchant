@@ -1,12 +1,16 @@
 ﻿using Merchant.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Merchant.Commands
 {
+    /// <summary>
+    /// Base class for commands
+    /// </summary>
     public abstract class Command
     {
-        public abstract void Accept(IVisitor visitor);
+        /// <summary>
+        /// Visit operation
+        /// </summary>
+        /// <param name="visitor"></param>
+        public abstract void Accept(ICommandVisitor visitor);
     }
 }

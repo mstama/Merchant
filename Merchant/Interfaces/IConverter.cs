@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Merchant.Interfaces
+﻿namespace Merchant.Interfaces
 {
     /// <summary>
     /// Interface for the converters
     /// </summary>
-    public interface IConverter<TSource,TTarget>
+    public interface IConverter<TSource, TTarget>
     {
         /// <summary>
         /// Executes the conversion

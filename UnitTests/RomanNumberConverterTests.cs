@@ -1,168 +1,134 @@
-using Merchant;
 using Merchant.Converters;
+using System.Collections.Generic;
 using Xunit;
 
 namespace UnitTests
 {
     public class RomanNumberConverterTests
     {
-        RomanNumberConverter target = new RomanNumberConverter();
-        [Fact]
-        public void TestDoubles()
+        private const string Category = "RomanNumberConverter";
+
+        private RomanNumberConverter target = new RomanNumberConverter();
+
+        public static IEnumerable<object[]> GetDoubles()
         {
-            // Arrange
-            string[] inputs = { "II", "XX", "CC", "MM" };
-
-            int[] outputs = { 2, 20, 200, 2000 };
-
-            for (int i = 0; i < inputs.Length; i++)
-            {
-                var input = inputs[i];
-                // Act
-                var output = target.Convert(input);
-                // Assert
-                Assert.Equal<int>(outputs[i], output);
-            }
+            yield return new object[] { "II", 2 };
+            yield return new object[] { "XX", 20 };
+            yield return new object[] { "CC", 200 };
+            yield return new object[] { "MM", 2000 };
         }
 
-        [Fact]
-        public void TestInvalidChar()
+        public static IEnumerable<object[]> GetInvalidChar()
         {
-            // Arrange
-            string[] inputs = { "IVZ", "IZX", "ZXL" };
-
-            for (int i = 0; i < inputs.Length; i++)
-            {
-                var input = inputs[i];
-                // Act
-                var output = target.Convert(input);
-                // Assert
-                Assert.Equal<int>(0, output);
-            }
+            yield return new object[] { "IVZ" };
+            yield return new object[] { "IZX" };
+            yield return new object[] { "ZXL" };
         }
 
-        [Fact]
-        public void TestInvalidOrder()
+        public static IEnumerable<object[]> GetInvalidOrder()
         {
-            // Arrange
-            string[] inputs = { "IL", "IC", "ID", "IM",
-                                "VX", "VL","VC","VD","VM",
-                                "XD","XM",
-                                "LC","LD","LM",
-                                "DM"};
-
-            for (int i = 0; i < inputs.Length; i++)
-            {
-                var input = inputs[i];
-                // Act
-                var output = target.Convert(input);
-                // Assert
-                Assert.Equal<int>(0, output);
-            }
+            yield return new object[] { "IL" };
+            yield return new object[] { "IC" };
+            yield return new object[] { "ID" };
+            yield return new object[] { "IM" };
+            yield return new object[] { "VX" };
+            yield return new object[] { "VL" };
+            yield return new object[] { "VC" };
+            yield return new object[] { "VD" };
+            yield return new object[] { "VM" };
+            yield return new object[] { "XD" };
+            yield return new object[] { "XM" };
+            yield return new object[] { "LC" };
+            yield return new object[] { "LD" };
+            yield return new object[] { "LM" };
+            yield return new object[] { "DM" };
         }
 
-        [Fact]
-        public void TestInvalidRepeatition()
+        public static IEnumerable<object[]> GetInvalidRepetition()
         {
-            // Arrange
-            string[] inputs = { "IIII", "VV", "XXXX", "LL", "CCCC", "DD", "MMMM" };
-
-            for (int i = 0; i < inputs.Length; i++)
-            {
-                var input = inputs[i];
-                // Act
-                var output = target.Convert(input);
-                // Assert
-                Assert.Equal<int>(0, output);
-            }
+            yield return new object[] { "IIII" };
+            yield return new object[] { "VV" };
+            yield return new object[] { "XXXX" };
+            yield return new object[] { "LL" };
+            yield return new object[] { "CCCC" };
+            yield return new object[] { "DD" };
+            yield return new object[] { "MMMM" };
         }
 
-        [Fact]
-        public void TestSingles()
+        public static IEnumerable<object[]> GetOtherInvalid()
         {
-            // Arrange
-            string[] inputs = { "I", "V", "X", "L", "C", "D", "M" };
-
-            int[] outputs = { 1, 5, 10, 50, 100, 500, 1000 };
-
-            for (int i = 0; i < inputs.Length; i++)
-            {
-                var input = inputs[i];
-                // Act
-                var output = target.Convert(input);
-                // Assert
-                Assert.Equal<int>(outputs[i], output);
-            }
+            yield return new object[] { "IXI" };
+            yield return new object[] { "MDM" };
+            yield return new object[] { "IXX" };
+            yield return new object[] { "IIX" };
+            yield return new object[] { "IXV" };
+            yield return new object[] { "XCC" };
         }
 
-        [Fact]
-        public void TestSubtraction()
+        public static IEnumerable<object[]> GetOtherValid()
         {
-            // Arrange
-            string[] inputs = { "IV", "IX", "XL", "XC", "CD", "CM" };
-
-            int[] outputs = { 4, 9, 40, 90, 400, 900 };
-
-            for (int i = 0; i < inputs.Length; i++)
-            {
-                var input = inputs[i];
-                // Act
-                var output = target.Convert(input);
-                // Assert
-                Assert.Equal<int>(outputs[i], output);
-            }
+            yield return new object[] { "MCMLXXXIV", 1984 };
+            yield return new object[] { "MMXVII", 2017 };
+            yield return new object[] { "MCMXCIV", 1994 };
+            yield return new object[] { "XLII", 42 };
         }
 
-        [Fact]
-        public void TestTriples()
+        public static IEnumerable<object[]> GetSingles()
         {
-            // Arrange
-            string[] inputs = { "III", "XXX", "CCC", "MMM" };
-
-            int[] outputs = { 3, 30, 300, 3000 };
-
-            for (int i = 0; i < inputs.Length; i++)
-            {
-                var input = inputs[i];
-                // Act
-                var output = target.Convert(input);
-                // Assert
-                Assert.Equal<int>(outputs[i], output);
-            }
+            yield return new object[] { "I", 1 };
+            yield return new object[] { "V", 5 };
+            yield return new object[] { "X", 10 };
+            yield return new object[] { "L", 50 };
+            yield return new object[] { "C", 100 };
+            yield return new object[] { "D", 500 };
+            yield return new object[] { "M", 1000 };
         }
 
-        [Fact]
-        public void OtherInvalidTests()
+        public static IEnumerable<object[]> GetSubtractions()
         {
-            // Arrange
-            string[] inputs = { "IXI", "MDM", "IXX", "IIX", "IXV", "XCC" };
-
-            for (int i = 0; i < inputs.Length; i++)
-            {
-                var input = inputs[i];
-                // Act
-                var output = target.Convert(input);
-                // Assert
-                Assert.Equal<int>(0, output);
-            }
+            yield return new object[] { "IV", 4 };
+            yield return new object[] { "IX", 9 };
+            yield return new object[] { "XL", 40 };
+            yield return new object[] { "XC", 90 };
+            yield return new object[] { "CD", 400 };
+            yield return new object[] { "CM", 900 };
+            yield return new object[] { "CDXLIV", 444 };
+            yield return new object[] { "CMXCIX", 999 };
         }
 
-        [Fact]
-        public void OtherValidTests()
+        public static IEnumerable<object[]> GetTriples()
         {
-            // Arrange
-            string[] inputs = { "MCMLXXXIV", "MMXVII", "MCMXCIV", "XLII" };
+            yield return new object[] { "III", 3 };
+            yield return new object[] { "XXX", 30 };
+            yield return new object[] { "CCC", 300 };
+            yield return new object[] { "MMM", 3000 };
+        }
 
-            int[] outputs = { 1984, 2017, 1994, 42 };
+        [Theory]
+        [MemberData(nameof(GetOtherInvalid))]
+        [MemberData(nameof(GetInvalidChar))]
+        [MemberData(nameof(GetInvalidOrder))]
+        [MemberData(nameof(GetInvalidRepetition))]
+        [Trait("Category", Category)]
+        public void InvalidTests(string input)
+        {
+            var output = target.Convert(input);
+            Assert.Equal<int>(0, output);
+        }
 
-            for (int i = 0; i < inputs.Length; i++)
-            {
-                var input = inputs[i];
-                // Act
-                var output = target.Convert(input);
-                // Assert
-                Assert.Equal<int>(outputs[i], output);
-            }
+        [Theory]
+        [MemberData(nameof(GetSingles))]
+        [MemberData(nameof(GetDoubles))]
+        [MemberData(nameof(GetTriples))]
+        [MemberData(nameof(GetSubtractions))]
+        [MemberData(nameof(GetOtherValid))]
+        [Trait("Category", Category)]
+        public void ValidTest(string input, int value)
+        {
+            // Act
+            var output = target.Convert(input);
+            // Assert
+            Assert.Equal<int>(value, output);
         }
     }
 }

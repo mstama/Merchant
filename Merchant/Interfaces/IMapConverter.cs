@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Merchant.Interfaces
+﻿namespace Merchant.Interfaces
 {
     /// <summary>
     /// Interface for the converters

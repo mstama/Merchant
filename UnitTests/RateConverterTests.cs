@@ -1,14 +1,14 @@
 ﻿using Merchant;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace UnitTests
 {
     public class RateCalculatorTests
     {
+        private const string Category = "RateCalculator";
+
         [Fact]
+        [Trait("Category", Category)]
         public void TestRateCommand()
         {
             // Arrange

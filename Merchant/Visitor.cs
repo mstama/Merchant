@@ -4,7 +4,10 @@ using System;
 
 namespace Merchant
 {
-    public class Visitor : IVisitor
+    /// <summary>
+    /// Command Visitor implementation
+    /// </summary>
+    public class Visitor : ICommandVisitor
     {
         private IRateCalculator _calculator;
         private IMapConverter<string, string> _mapConverter;

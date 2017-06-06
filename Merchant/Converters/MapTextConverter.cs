@@ -10,16 +10,31 @@ namespace Merchant.Converters
     /// </summary>
     public class MapTextConverter : IMapConverter<string, string>
     {
+        private readonly static char[] _separator = new char[] { ' ' };
         private Dictionary<string, string> _dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        private readonly static char[] _separator = new char[]{' '};
+        
+        /// <summary>
+        /// Add a mapping
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="target"></param>
+        public void AddMap(string from, string target)
+        {
+            _dict.Add(from, target);
+        }
 
+        /// <summary>
+        /// Executes the conversion
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public string Convert(string value)
         {
             var numbers = value.Split(_separator, StringSplitOptions.RemoveEmptyEntries);
             StringBuilder output = new StringBuilder();
-            foreach(var number in numbers)
+            foreach (var number in numbers)
             {
-                if(_dict.TryGetValue(number, out string toValue))
+                if (_dict.TryGetValue(number, out string toValue))
                 {
                     output.Append(toValue);
                 }
@@ -29,11 +44,6 @@ namespace Merchant.Converters
                 }
             }
             return output.ToString();
-        }
-
-        public void AddMap(string from, string target)
-        {
-            _dict.Add(from, target);
         }
     }
 }

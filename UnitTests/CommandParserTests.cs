@@ -1,17 +1,33 @@
 ﻿using Merchant;
 using Merchant.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace UnitTests
 {
     public class CommandParserTests
     {
-        CommandParser target = new CommandParser();
+        private const string Category = "CommandParser";
+
+        private CommandParser target = new CommandParser();
 
         [Fact]
+        [Trait("Category", Category)]
+        public void TestManyQueryCommand()
+        {
+            // Arrange
+            string input = "how many Credits is glob prok Iron ?";
+            // Act
+            var output = target.Parse(input);
+            // Assert
+            Assert.IsType<ManyQueryCommand>(output);
+            var final = output as ManyQueryCommand;
+            Assert.Equal<string>("glob prok", final.Amount);
+            Assert.Equal<string>("Iron", final.Commodity);
+        }
+
+        [Fact]
+        [Trait("Category", Category)]
         public void TestMapCommand()
         {
             // Arrange
@@ -26,6 +42,21 @@ namespace UnitTests
         }
 
         [Fact]
+        [Trait("Category", Category)]
+        public void TestMuchQueryCommand()
+        {
+            // Arrange
+            string input = "how much is pish tegj glob glob ?";
+            // Act
+            var output = target.Parse(input);
+            // Assert
+            Assert.IsType<MuchQueryCommand>(output);
+            var final = output as MuchQueryCommand;
+            Assert.Equal<string>("pish tegj glob glob", final.Amount);
+        }
+
+        [Fact]
+        [Trait("Category", Category)]
         public void TestRateCommand()
         {
             // Arrange
@@ -41,33 +72,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void TestMuchQueryCommand()
-        {
-            // Arrange
-            string input = "how much is pish tegj glob glob ?";
-            // Act
-            var output = target.Parse(input);
-            // Assert
-            Assert.IsType<MuchQueryCommand>(output);
-            var final = output as MuchQueryCommand;
-            Assert.Equal<string>("pish tegj glob glob", final.Amount);
-        }
-
-        [Fact]
-        public void TestManyQueryCommand()
-        {
-            // Arrange
-            string input = "how many Credits is glob prok Iron ?";
-            // Act
-            var output = target.Parse(input);
-            // Assert
-            Assert.IsType<ManyQueryCommand>(output);
-            var final = output as ManyQueryCommand;
-            Assert.Equal<string>("glob prok", final.Amount);
-            Assert.Equal<string>("Iron", final.Commodity);
-        }
-
-        [Fact]
+        [Trait("Category", Category)]
         public void TestUnknownCommand()
         {
             // Arrange

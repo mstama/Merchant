@@ -1,11 +1,11 @@
 ﻿using Merchant.Commands;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Merchant.Interfaces
 {
-    public interface IVisitor
+    /// <summary>
+    /// Interface for the visitor patter on command
+    /// </summary>
+    public interface ICommandVisitor
     {
         void Visit(ManyQueryCommand command);
 

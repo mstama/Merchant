@@ -1,10 +1,10 @@
 ﻿using Merchant.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Merchant.Commands
 {
+    /// <summary>
+    /// Command for text mapping
+    /// </summary>
     public class MapCommand : Command
     {
         public MapCommand(string from, string to)
@@ -12,16 +12,25 @@ namespace Merchant.Commands
             From = from;
             To = to;
         }
+
+        /// <summary>
+        /// From text
+        /// </summary>
         public string From { get; set; }
+
+        /// <summary>
+        /// To text
+        /// </summary>
         public string To { get; set; }
+
+        public override void Accept(ICommandVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
         public override string ToString()
         {
             return string.Format("{0} is {1}", From, To);
-        }
-
-        public override void Accept(IVisitor visitor)
-        {
-            visitor.Visit(this);
         }
     }
 }

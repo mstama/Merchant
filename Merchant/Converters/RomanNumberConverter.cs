@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Merchant.Interfaces;
+﻿using Merchant.Interfaces;
 
 namespace Merchant.Converters
 {
@@ -8,7 +7,11 @@ namespace Merchant.Converters
     /// </summary>
     public class RomanNumberConverter : IConverter<string, int>
     {
-        // Number mapping
+        /// <summary>
+        /// Executes the conversion
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public int Convert(string value)
         {
             var numbers = value.ToCharArray();
