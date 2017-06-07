@@ -2925,6 +2925,12 @@
         "framework": ".NETCoreApp,Version=v1.1",
         "dependencies": {
           "Microsoft.NETCore.App": "1.1.2"
+        },
+        "compile": {
+          "bin/placeholder/netcoreapp1.1/Merchant.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/netcoreapp1.1/Merchant.dll": {}
         }
       }
     }
@@ -8546,6 +8552,9 @@
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
+      "files": {
+        "lib/netcoreapp1.1/UnitTests.dll": "C:\\code\\Challenge\\Merchant\\UnitTests\\bin\\placeholder\\netcoreapp1.1\\UnitTests.dll"
+      },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
@@ -8559,22 +8568,21 @@
     "frameworks": {
       "netcoreapp1.1": {
         "dependencies": {
-          "xunit.runner.visualstudio": {
-            "target": "Package",
-            "version": "2.2.0"
-          },
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "1.1.2",
-            "autoReferenced": true
+            "version": "1.1.2"
+          },
+          "Microsoft.NET.Test.Sdk": {
+            "target": "Package",
+            "version": "15.0.0"
           },
           "xunit": {
             "target": "Package",
             "version": "2.2.0"
           },
-          "Microsoft.NET.Test.Sdk": {
+          "xunit.runner.visualstudio": {
             "target": "Package",
-            "version": "15.0.0"
+            "version": "2.2.0"
           }
         }
       }
