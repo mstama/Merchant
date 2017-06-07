@@ -1,4 +1,4 @@
-﻿namespace Merchant.Converters
+﻿namespace Merchant.Models
 {
     /// <summary>
     /// Provides Roman Number representation and associated meta-data

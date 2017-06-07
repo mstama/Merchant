@@ -1,6 +1,6 @@
 ﻿using Merchant.Interfaces;
 
-namespace Merchant.Commands
+namespace Merchant.Models
 {
     /// <summary>
     /// Command for text mapping

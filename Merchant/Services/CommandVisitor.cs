@@ -1,19 +1,19 @@
-﻿using Merchant.Commands;
+﻿using Merchant.Models;
 using Merchant.Interfaces;
 using System;
 
-namespace Merchant
+namespace Merchant.Services
 {
     /// <summary>
     /// Command Visitor implementation
     /// </summary>
-    public class Visitor : ICommandVisitor
+    public class CommandVisitor : ICommandVisitor
     {
         private IRateCalculator _calculator;
         private IMapConverter<string, string> _mapConverter;
         private IConverter<string, int> _romanConverter;
 
-        public Visitor(IRateCalculator calculator, IMapConverter<string, string> mapConverter, IConverter<string, int> romanConverter)
+        public CommandVisitor(IRateCalculator calculator, IMapConverter<string, string> mapConverter, IConverter<string, int> romanConverter)
         {
             _calculator = calculator;
             _mapConverter = mapConverter;

@@ -1,5 +1,5 @@
-﻿using Merchant.Converters;
-using Merchant.Interfaces;
+﻿using Merchant.Interfaces;
+using Merchant.Services;
 using System;
 using System.IO;
 
@@ -7,14 +7,14 @@ namespace Merchant
 {
     internal class Program
     {
-        private static ICommandParser parser;
-        private static ICommandVisitor visitor;
+        private static ICommandParser _parser;
+        private static ICommandVisitor _visitor;
 
         // Composition root
         private static void Init()
         {
-            visitor = new Visitor(new RateCalculator(), new MapTextConverter(), new RomanNumberConverter());
-            parser = new CommandParser();
+            _visitor = new CommandVisitor(new RateCalculator(), new MapTextConverter(), new RomanNumberConverter());
+            _parser = new CommandParser();
         }
 
         private static void Main(string[] args)
@@ -32,8 +32,8 @@ namespace Merchant
 
             foreach (var line in lines)
             {
-                var command = parser.Parse(line);
-                command.Accept(visitor);
+                var command = _parser.Parse(line);
+                command.Accept(_visitor);
             }
         }
     }

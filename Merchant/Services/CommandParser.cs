@@ -1,9 +1,9 @@
-﻿using Merchant.Commands;
+﻿using Merchant.Models;
 using Merchant.Interfaces;
 using System;
 using System.Linq;
 
-namespace Merchant
+namespace Merchant.Services
 {
     /// <summary>
     /// Parse the text commands
@@ -15,21 +15,21 @@ namespace Merchant
         /// <summary>
         /// Parse the text and returns a command
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="text"></param>
         /// <returns></returns>
-        public Command Parse(string value)
+        public Command Parse(string text)
         {
-            var words = value.Split(_separator, StringSplitOptions.RemoveEmptyEntries);
-            value = value.ToUpperInvariant();
+            var words = text.Split(_separator, StringSplitOptions.RemoveEmptyEntries);
+            text = text.ToUpperInvariant();
             //It is a query
-            if (value.Contains("?"))
+            if (text.Contains("?"))
             {
-                if (value.Contains("HOW MUCH IS "))
+                if (text.Contains("HOW MUCH IS "))
                 {
                     string amount = string.Join(" ", words.Skip(3).Take(words.Length - 4));
                     return new MuchQueryCommand(amount);
                 }
-                if (value.Contains("HOW MANY CREDITS IS "))
+                if (text.Contains("HOW MANY CREDITS IS "))
                 {
                     string commodity = words[words.Length - 2];
                     string amount = string.Join(" ", words.Skip(4).Take(words.Length - 6));
@@ -39,7 +39,7 @@ namespace Merchant
             else //Its a Mapping-Rate
             {
                 // Rate
-                if (value.Contains("CREDITS"))
+                if (text.Contains("CREDITS"))
                 {
                     int credit = int.Parse(words[words.Length - 2]);
                     string commodity = words[words.Length - 4];
@@ -51,7 +51,7 @@ namespace Merchant
                     return new MapCommand(words[0], words[2]);
                 }
             }
-            return new UnknownCommand(value);
+            return new UnknownCommand(text);
         }
     }
 }

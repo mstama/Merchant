@@ -1,16 +1,17 @@
 ﻿using Merchant.Interfaces;
 
-namespace Merchant.Commands
+namespace Merchant.Models
 {
     /// <summary>
-    /// Command for how many questions
+    /// Command for rate
     /// </summary>
-    public class ManyQueryCommand : Command
+    public class RateCommand : Command
     {
-        public ManyQueryCommand(string commodity, string amount)
+        public RateCommand(string commodity, string amount, int creditValue)
         {
             Commodity = commodity;
             Amount = amount;
+            CreditValue = creditValue;
         }
 
         /// <summary>
@@ -23,6 +24,11 @@ namespace Merchant.Commands
         /// </summary>
         public string Commodity { get; set; }
 
+        /// <summary>
+        /// Value in credits
+        /// </summary>
+        public int CreditValue { get; set; }
+
         public override void Accept(ICommandVisitor visitor)
         {
             visitor.Visit(this);
@@ -30,7 +36,7 @@ namespace Merchant.Commands
 
         public override string ToString()
         {
-            return string.Format("How many Credits is {0} {1}", Amount, Commodity);
+            return string.Format("{0} {1} is {2} Credits", Amount, Commodity, CreditValue);
         }
     }
 }

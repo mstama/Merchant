@@ -1,6 +1,7 @@
 ﻿using Merchant.Interfaces;
+using Merchant.Models;
 
-namespace Merchant.Converters
+namespace Merchant.Services
 {
     /// <summary>
     /// Knows how to convert romans to integer

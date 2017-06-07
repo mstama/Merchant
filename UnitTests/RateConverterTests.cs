@@ -1,4 +1,4 @@
-﻿using Merchant;
+﻿using Merchant.Services;
 using Xunit;
 
 namespace UnitTests

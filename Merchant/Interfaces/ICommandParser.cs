@@ -1,4 +1,4 @@
-﻿using Merchant.Commands;
+﻿using Merchant.Models;
 
 namespace Merchant.Interfaces
 {
@@ -10,8 +10,8 @@ namespace Merchant.Interfaces
         /// <summary>
         /// Parse the text to return a command
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="text"></param>
         /// <returns></returns>
-        Command Parse(string value);
+        Command Parse(string text);
     }
 }

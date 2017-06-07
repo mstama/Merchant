@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Merchant
+namespace Merchant.Services
 {
     /// <summary>
     /// Provides credit calculation for a registered commodity

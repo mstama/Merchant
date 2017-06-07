@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Merchant.Converters
+namespace Merchant.Models
 {
     /// <summary>
     /// Provides a factory

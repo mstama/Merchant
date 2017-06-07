@@ -1,4 +1,4 @@
-﻿using Merchant.Commands;
+﻿using Merchant.Models;
 
 namespace Merchant.Interfaces
 {

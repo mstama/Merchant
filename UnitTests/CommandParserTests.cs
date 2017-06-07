@@ -1,5 +1,5 @@
-﻿using Merchant;
-using Merchant.Commands;
+﻿using Merchant.Services;
+using Merchant.Models;
 using System;
 using Xunit;
 

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Merchant.Converters
+namespace Merchant.Services
 {
     /// <summary>
     /// Provides text converted with the mapped entries
