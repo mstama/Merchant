@@ -2,6 +2,7 @@
 using Merchant.Interfaces;
 using System;
 using System.Linq;
+using Merchant.Extensions;
 
 namespace Merchant.Services
 {
@@ -11,6 +12,7 @@ namespace Merchant.Services
     public class CommandParser : ICommandParser
     {
         private static char[] _separator = new char[] { ' ' };
+        private StringComparison _comparer = StringComparison.OrdinalIgnoreCase;
 
         /// <summary>
         /// Parse the text and returns a command
@@ -20,16 +22,15 @@ namespace Merchant.Services
         public Command Parse(string text)
         {
             var words = text.Split(_separator, StringSplitOptions.RemoveEmptyEntries);
-            text = text.ToUpperInvariant();
             //It is a query
-            if (text.Contains("?"))
+            if (text.Contains("?", _comparer))
             {
-                if (text.Contains("HOW MUCH IS "))
+                if (text.Contains("HOW MUCH IS ", _comparer))
                 {
                     string amount = string.Join(" ", words.Skip(3).Take(words.Length - 4));
                     return new MuchQueryCommand(amount);
                 }
-                if (text.Contains("HOW MANY CREDITS IS "))
+                if (text.Contains("HOW MANY CREDITS IS ", _comparer))
                 {
                     string commodity = words[words.Length - 2];
                     string amount = string.Join(" ", words.Skip(4).Take(words.Length - 6));
@@ -39,7 +40,7 @@ namespace Merchant.Services
             else //Its a Mapping-Rate
             {
                 // Rate
-                if (text.Contains("CREDITS"))
+                if (text.Contains("CREDITS", _comparer))
                 {
                     int credit = int.Parse(words[words.Length - 2]);
                     string commodity = words[words.Length - 4];

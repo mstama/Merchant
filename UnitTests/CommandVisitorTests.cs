@@ -11,7 +11,7 @@ namespace UnitTests
     {
         private const string Category = "CommandVisitor";
 
-        private CommandVisitor target = new CommandVisitor(null, null, null);
+        private readonly CommandVisitor _target = new CommandVisitor(null, null, null);
 
         [Fact]
         [Trait("Category", Category)]
@@ -21,8 +21,7 @@ namespace UnitTests
             var command = new UnknownCommand("test");
 
             // Act
-            command.Accept(target);
-
+            command.Accept(_target);
         }
     }
 }

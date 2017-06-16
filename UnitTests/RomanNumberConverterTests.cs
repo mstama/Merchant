@@ -8,7 +8,7 @@ namespace UnitTests
     {
         private const string Category = "RomanNumberConverter";
 
-        private RomanNumberConverter target = new RomanNumberConverter();
+        private readonly RomanNumberConverter _target = new RomanNumberConverter();
 
         public static IEnumerable<object[]> GetDoubles()
         {
@@ -112,7 +112,7 @@ namespace UnitTests
         [Trait("Category", Category)]
         public void InvalidTests(string input)
         {
-            var output = target.Convert(input);
+            var output = _target.Convert(input);
             Assert.Equal<int>(0, output);
         }
 
@@ -126,7 +126,7 @@ namespace UnitTests
         public void ValidTest(string input, int value)
         {
             // Act
-            var output = target.Convert(input);
+            var output = _target.Convert(input);
             // Assert
             Assert.Equal<int>(value, output);
         }
