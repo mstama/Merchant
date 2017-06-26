@@ -1,6 +1,7 @@
 # Merchant Guide to the Galaxy
 
 ### Description
+
 You decided to give up on earth after the latest financial collapse left 99.99% of the earth's
 population with 0.01% of the wealth. Luckily, with the scant sum of money that is left in your
 account, you are able to afford to rent a spaceship, leave earth, and fly all over the galaxy to sell
@@ -43,12 +44,13 @@ treated separately. Inthe above example, 1,000 = M, 900 = CM, and 3 = III. There
 MCMIII.
 
 ### Problem
+
 Input to your program consists of lines of text detailing your notes on the conversion between
 intergalactic units and roman numerals.
 
 You are expected to handle invalid queries appropriately.
 
-#### Test input:
+#### Test input
 
 glob is I
 
@@ -74,7 +76,7 @@ how many Credits is glob prok Iron ?
 
 how much wood could a woodchuck chuck if a woodchuck could chuck wood ?
 
-#### Test Output:
+#### Test Output
 
 pish tegj glob glob is 42
 
