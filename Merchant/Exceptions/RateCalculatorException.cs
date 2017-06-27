@@ -3,21 +3,21 @@
 namespace Merchant.Exceptions
 {
     /// <summary>
-    /// Error class for Roman Digits operations
+    /// Error class for Rate calculator
     /// </summary>
-    public class RomanDigitException : MerchantException
+    public class RateCalculatorException : MerchantException
     {
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="message">Error message</param>
-        public RomanDigitException(string message) : base(message) { }
+        public RateCalculatorException(string message) : base(message) { }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="message">Error message</param>
         /// <param name="innerException">Inner exception</param>
-        public RomanDigitException(string message, Exception innerException) : base(message, innerException) { }
+        public RateCalculatorException(string message, Exception innerException) : base(message, innerException) { }
     }
 }

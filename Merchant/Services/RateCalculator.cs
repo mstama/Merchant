@@ -1,4 +1,5 @@
-﻿using Merchant.Interfaces;
+﻿using Merchant.Exceptions;
+using Merchant.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -30,7 +31,7 @@ namespace Merchant.Services
         /// <returns></returns>
         public double ToCredits(string commodity, int amount)
         {
-            if (string.IsNullOrWhiteSpace(commodity)) return 0;
+            if (!_dict.ContainsKey(commodity)) throw new RateCalculatorException("Commodity not registered!");
             double rate = _dict[commodity];
             return amount * rate;
         }
