@@ -22,7 +22,7 @@ namespace UnitTests
             // Assert
             Assert.IsType<ManyQueryCommand>(output);
             var final = output as ManyQueryCommand;
-            Assert.Equal<string>("glob prok", final.Amount);
+            Assert.Equal<string>("glob prok", final.AlienValue);
             Assert.Equal<string>("Iron", final.Commodity);
         }
 
@@ -52,7 +52,7 @@ namespace UnitTests
             // Assert
             Assert.IsType<MuchQueryCommand>(output);
             var final = output as MuchQueryCommand;
-            Assert.Equal<string>("pish tegj glob glob", final.Amount);
+            Assert.Equal<string>("pish tegj glob glob", final.AlienValue);
         }
 
         [Fact]

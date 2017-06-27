@@ -22,7 +22,7 @@ namespace Merchant.Services
 
         public void Visit(ManyQueryCommand command)
         {
-            Console.WriteLine("{0} {1} is {2} Credits", command.Amount, command.Commodity, _calculator.ToCredits(command.Commodity, AmountToInt(command.Amount)));
+            Console.WriteLine("{0} {1} is {2} Credits", command.AlienValue, command.Commodity, _calculator.ToCredits(command.Commodity, AmountToInt(command.AlienValue)));
         }
 
         public void Visit(MapCommand command)
@@ -32,7 +32,7 @@ namespace Merchant.Services
 
         public void Visit(MuchQueryCommand command)
         {
-            Console.WriteLine("{0} is {1}", command.Amount, AmountToInt(command.Amount));
+            Console.WriteLine("{0} is {1}", command.AlienValue, AmountToInt(command.AlienValue));
         }
 
         public void Visit(RateCommand command)

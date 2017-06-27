@@ -7,10 +7,16 @@ namespace Merchant.Models
     /// </summary>
     public class RateCommand : Command
     {
-        public RateCommand(string commodity, string amount, int creditValue)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="commodity"></param>
+        /// <param name="alienValue"></param>
+        /// <param name="creditValue"></param>
+        public RateCommand(string commodity, string alienValue, int creditValue)
         {
             Commodity = commodity;
-            Amount = amount;
+            Amount = alienValue;
             CreditValue = creditValue;
         }
 
@@ -29,6 +35,10 @@ namespace Merchant.Models
         /// </summary>
         public int CreditValue { get; set; }
 
+        /// <summary>
+        /// Run visitor method
+        /// </summary>
+        /// <param name="visitor"></param>
         public override void Accept(ICommandVisitor visitor)
         {
             visitor.Visit(this);

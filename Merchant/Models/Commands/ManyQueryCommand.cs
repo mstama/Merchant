@@ -7,22 +7,31 @@ namespace Merchant.Models
     /// </summary>
     public class ManyQueryCommand : Command
     {
-        public ManyQueryCommand(string commodity, string amount)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="commodity">Name of commodity</param>
+        /// <param name="alienValue">Alien value</param>
+        public ManyQueryCommand(string commodity, string alienValue)
         {
             Commodity = commodity;
-            Amount = amount;
+            AlienValue = alienValue;
         }
 
         /// <summary>
-        /// Amount in text
+        /// Alien value
         /// </summary>
-        public string Amount { get; set; }
+        public string AlienValue { get; set; }
 
         /// <summary>
         /// Name of the commodity
         /// </summary>
         public string Commodity { get; set; }
 
+        /// <summary>
+        /// Run visitor method
+        /// </summary>
+        /// <param name="visitor"></param>
         public override void Accept(ICommandVisitor visitor)
         {
             visitor.Visit(this);
@@ -30,7 +39,7 @@ namespace Merchant.Models
 
         public override string ToString()
         {
-            return string.Format("How many Credits is {0} {1}", Amount, Commodity);
+            return string.Format("How many Credits is {0} {1}", AlienValue, Commodity);
         }
     }
 }

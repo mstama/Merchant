@@ -23,6 +23,10 @@ namespace Merchant.Models
         /// </summary>
         public string To { get; set; }
 
+        /// <summary>
+        /// Run visitor method
+        /// </summary>
+        /// <param name="visitor"></param>
         public override void Accept(ICommandVisitor visitor)
         {
             visitor.Visit(this);

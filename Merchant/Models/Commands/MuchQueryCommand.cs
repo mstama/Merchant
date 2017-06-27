@@ -7,16 +7,24 @@ namespace Merchant.Models
     /// </summary>
     public class MuchQueryCommand : Command
     {
-        public MuchQueryCommand(string amount)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="alienValue"></param>
+        public MuchQueryCommand(string alienValue)
         {
-            Amount = amount;
+            AlienValue = alienValue;
         }
 
         /// <summary>
-        /// Amount in text
+        /// Alien value
         /// </summary>
-        public string Amount { get; set; }
+        public string AlienValue { get; set; }
 
+        /// <summary>
+        /// Run visitor method
+        /// </summary>
+        /// <param name="visitor"></param>
         public override void Accept(ICommandVisitor visitor)
         {
             visitor.Visit(this);
@@ -24,7 +32,7 @@ namespace Merchant.Models
 
         public override string ToString()
         {
-            return string.Format("How much is {0}?", Amount);
+            return string.Format("How much is {0}?", AlienValue);
         }
     }
 }
