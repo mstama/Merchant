@@ -1,3 +1,4 @@
+using Merchant.Exceptions;
 using Merchant.Services;
 using System.Collections.Generic;
 using Xunit;
@@ -112,8 +113,7 @@ namespace UnitTests
         [Trait("Category", Category)]
         public void InvalidTests(string input)
         {
-            var output = _target.Convert(input);
-            Assert.Equal<int>(0, output);
+            Assert.Throws<RomanDigitException>(() => _target.Convert(input));
         }
 
         [Theory]

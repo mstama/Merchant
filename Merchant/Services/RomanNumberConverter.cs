@@ -1,5 +1,6 @@
 ﻿using Merchant.Interfaces;
 using Merchant.Models;
+using Merchant.Exceptions;
 
 namespace Merchant.Services
 {
@@ -16,16 +17,15 @@ namespace Merchant.Services
         public int Convert(string value)
         {
             var numbers = value.ToCharArray();
-            var romans = new RomanNumber[numbers.Length];
+            var romans = new RomanDigit[numbers.Length];
             // List of romans that were used to subtract
-            RomanNumber previous = null;
+            RomanDigit previous = null;
             for (int i = 0; i < numbers.Length; i++)
             {
-                var roman = RomanNumberFactory.Create(numbers[i]);
+                var roman = RomanDigitFactory.Create(numbers[i]);
 
                 // If number is not mapped
-                if (roman == null) return 0;
-                roman.AddPrevious(previous);
+                roman.SetPrevious(previous);
                 previous = roman;
             }
 
