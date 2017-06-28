@@ -1,19 +1,19 @@
 ﻿using Merchant.Exceptions;
+using Merchant.Extensions;
 using Merchant.Interfaces;
 using Merchant.Models;
 using Merchant.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Merchant.Extensions;
 
 namespace Merchant
 {
     internal class Program
     {
         private static ICommandParser _parser;
-        private static ICommandVisitor _visitor;
         private static Queue<Command> _retry = new Queue<Command>();
+        private static ICommandVisitor _visitor;
 
         // Composition root
         private static void Init()
