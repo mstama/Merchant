@@ -1,5 +1,5 @@
-﻿using Merchant.Services;
-using Merchant.Models;
+﻿using Merchant.Models;
+using Merchant.Services;
 using System;
 using Xunit;
 
@@ -7,12 +7,12 @@ namespace UnitTests
 {
     public class CommandParserTests
     {
-        private const string Category = "CommandParser";
+        private const string _category = "CommandParser";
 
         private readonly CommandParser _target = new CommandParser();
 
         [Fact]
-        [Trait("Category", Category)]
+        [Trait("Category", _category)]
         public void TestManyQueryCommand()
         {
             // Arrange
@@ -27,7 +27,7 @@ namespace UnitTests
         }
 
         [Fact]
-        [Trait("Category", Category)]
+        [Trait("Category", _category)]
         public void TestMapCommand()
         {
             // Arrange
@@ -42,7 +42,7 @@ namespace UnitTests
         }
 
         [Fact]
-        [Trait("Category", Category)]
+        [Trait("Category", _category)]
         public void TestMuchQueryCommand()
         {
             // Arrange
@@ -55,8 +55,21 @@ namespace UnitTests
             Assert.Equal<string>("pish tegj glob glob", final.AlienValue);
         }
 
+        [Theory]
+        [InlineData("")]
+        [InlineData("   ")]
+        [InlineData(null)]
+        [Trait("Category", _category)]
+        public void TestNullCommand(string input)
+        {
+            // Act
+            var output = _target.Parse(input);
+            // Assert
+            Assert.IsType<NullCommand>(output);
+        }
+
         [Fact]
-        [Trait("Category", Category)]
+        [Trait("Category", _category)]
         public void TestRateCommand()
         {
             // Arrange
@@ -72,7 +85,7 @@ namespace UnitTests
         }
 
         [Fact]
-        [Trait("Category", Category)]
+        [Trait("Category", _category)]
         public void TestUnknownCommand()
         {
             // Arrange
@@ -81,19 +94,6 @@ namespace UnitTests
             var output = _target.Parse(input);
             // Assert
             Assert.IsType<UnknownCommand>(output);
-        }
-
-        [Theory]
-        [InlineData("")]
-        [InlineData("   ")]
-        [InlineData(null)]
-        [Trait("Category", Category)]
-        public void TestNullCommand(string input)
-        {
-            // Act
-            var output = _target.Parse(input);
-            // Assert
-            Assert.IsType<NullCommand>(output);
         }
     }
 }

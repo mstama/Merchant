@@ -5,10 +5,10 @@ namespace UnitTests
 {
     public class MapTextConverterTests
     {
-        private const string Category = "MapTextConverter";
+        private const string _category = "MapTextConverter";
 
         [Fact]
-        [Trait("Category", Category)]
+        [Trait("Category", _category)]
         public void TestMap()
         {
             // Arrange
@@ -27,7 +27,7 @@ namespace UnitTests
         }
 
         [Fact]
-        [Trait("Category", Category)]
+        [Trait("Category", _category)]
         public void TestNoMap()
         {
             // Arrange

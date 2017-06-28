@@ -5,10 +5,10 @@ namespace UnitTests
 {
     public class RateCalculatorTests
     {
-        private const string Category = "RateCalculator";
+        private const string _category = "RateCalculator";
 
         [Fact]
-        [Trait("Category", Category)]
+        [Trait("Category", _category)]
         public void TestRateCommand()
         {
             // Arrange
