@@ -7,16 +7,24 @@ namespace Merchant.Models
     /// </summary>
     public class UnknownCommand : Command
     {
+        /// <summary>
+        /// Command text found
+        /// </summary>
+        public string Text { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="value"></param>
         public UnknownCommand(string value)
         {
             Text = value;
         }
 
         /// <summary>
-        /// Command text found
+        /// Run visitor method
         /// </summary>
-        public string Text { get; set; }
-
+        /// <param name="visitor"></param>
         public override void Accept(ICommandVisitor visitor)
         {
             visitor.Visit(this);

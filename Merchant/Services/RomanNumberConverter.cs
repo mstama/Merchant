@@ -1,6 +1,5 @@
 ﻿using Merchant.Interfaces;
 using Merchant.Models;
-using Merchant.Exceptions;
 
 namespace Merchant.Services
 {

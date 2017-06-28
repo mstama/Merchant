@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Merchant.Interfaces;
+﻿using Merchant.Interfaces;
 
 namespace Merchant.Models
 {
@@ -10,6 +7,10 @@ namespace Merchant.Models
     /// </summary>
     public class NullCommand : Command
     {
+        /// <summary>
+        /// Do nothing with the visitor
+        /// </summary>
+        /// <param name="visitor"></param>
         public override void Accept(ICommandVisitor visitor)
         {
             return;

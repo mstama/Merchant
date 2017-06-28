@@ -1,8 +1,8 @@
-﻿using Merchant.Models;
+﻿using Merchant.Extensions;
 using Merchant.Interfaces;
+using Merchant.Models;
 using System;
 using System.Linq;
-using Merchant.Extensions;
 
 namespace Merchant.Services
 {
@@ -11,8 +11,8 @@ namespace Merchant.Services
     /// </summary>
     public class CommandParser : ICommandParser
     {
+        private static readonly StringComparison _comparer = StringComparison.OrdinalIgnoreCase;
         private static char[] _separator = new char[] { ' ' };
-        private StringComparison _comparer = StringComparison.OrdinalIgnoreCase;
 
         /// <summary>
         /// Parse the text and returns a command

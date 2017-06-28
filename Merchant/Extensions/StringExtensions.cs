@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Merchant.Extensions
 {
+    /// <summary>
+    /// Extension methods for strings
+    /// </summary>
     public static class StringExtensions
     {
         /// <summary>

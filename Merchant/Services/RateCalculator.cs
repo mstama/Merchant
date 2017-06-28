@@ -10,7 +10,7 @@ namespace Merchant.Services
     /// </summary>
     public class RateCalculator : IRateCalculator
     {
-        private Dictionary<string, double> _dict = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<string, double> _dict = new Dictionary<string, double>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Register commodity rate in credits

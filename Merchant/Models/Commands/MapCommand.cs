@@ -7,12 +7,6 @@ namespace Merchant.Models
     /// </summary>
     public class MapCommand : Command
     {
-        public MapCommand(string from, string to)
-        {
-            From = from;
-            To = to;
-        }
-
         /// <summary>
         /// From text
         /// </summary>
@@ -22,6 +16,17 @@ namespace Merchant.Models
         /// To text
         /// </summary>
         public string To { get; set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        public MapCommand(string from, string to)
+        {
+            From = from;
+            To = to;
+        }
 
         /// <summary>
         /// Run visitor method

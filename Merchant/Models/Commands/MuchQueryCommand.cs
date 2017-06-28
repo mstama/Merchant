@@ -8,6 +8,11 @@ namespace Merchant.Models
     public class MuchQueryCommand : Command
     {
         /// <summary>
+        /// Alien value
+        /// </summary>
+        public string AlienValue { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="alienValue"></param>
@@ -15,11 +20,6 @@ namespace Merchant.Models
         {
             AlienValue = alienValue;
         }
-
-        /// <summary>
-        /// Alien value
-        /// </summary>
-        public string AlienValue { get; set; }
 
         /// <summary>
         /// Run visitor method

@@ -8,6 +8,16 @@ namespace Merchant.Models
     public class ManyQueryCommand : Command
     {
         /// <summary>
+        /// Alien value
+        /// </summary>
+        public string AlienValue { get; set; }
+
+        /// <summary>
+        /// Name of the commodity
+        /// </summary>
+        public string Commodity { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="commodity">Name of commodity</param>
@@ -17,16 +27,6 @@ namespace Merchant.Models
             Commodity = commodity;
             AlienValue = alienValue;
         }
-
-        /// <summary>
-        /// Alien value
-        /// </summary>
-        public string AlienValue { get; set; }
-
-        /// <summary>
-        /// Name of the commodity
-        /// </summary>
-        public string Commodity { get; set; }
 
         /// <summary>
         /// Run visitor method
