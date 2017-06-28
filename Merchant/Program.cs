@@ -42,7 +42,7 @@ namespace Merchant
                 {
                     command.Accept(_visitor);
                 }
-                catch (MerchantException)
+                catch (MerchantException) // Known exception
                 {
                     _retry.Enqueue(command);
                 }
@@ -51,16 +51,8 @@ namespace Merchant
             while (_retry.NotEmpty())
             {
                 var command = _retry.Dequeue();
-                try
-                {
-                    command.Accept(_visitor);
-                }
-                catch(Exception e)
-                {
-                    Console.WriteLine(e);
-                }
+                command.Accept(_visitor);
             }
-            Console.ReadLine();
         }
     }
 }

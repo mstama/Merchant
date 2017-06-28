@@ -82,5 +82,18 @@ namespace UnitTests
             // Assert
             Assert.IsType<UnknownCommand>(output);
         }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("   ")]
+        [InlineData(null)]
+        [Trait("Category", Category)]
+        public void TestNullCommand(string input)
+        {
+            // Act
+            var output = _target.Parse(input);
+            // Assert
+            Assert.IsType<NullCommand>(output);
+        }
     }
 }
