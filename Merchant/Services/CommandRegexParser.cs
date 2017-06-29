@@ -14,10 +14,10 @@ namespace Merchant.Services
         private const string _mapPattern = @"^ *(?<From>\w+) +is +(?<To>\w+) *$";
         private const string _muchPattern = @"^ *how +much +is +(?<AlienValue>.*\b) *\? *$";
         private const string _ratePattern = @"^ *(?<AlienValue>.*) +(?<Commodity>\w+) +is +(?<TargetValue>\d+) +(?<Target>\w+) *$";
-        private static readonly Regex _manyExpression = new Regex(_manyPattern, RegexOptions.CultureInvariant & RegexOptions.IgnoreCase);
-        private static readonly Regex _mapExpression = new Regex(_mapPattern, RegexOptions.CultureInvariant & RegexOptions.IgnoreCase);
-        private static readonly Regex _muchExpression = new Regex(_muchPattern, RegexOptions.CultureInvariant & RegexOptions.IgnoreCase);
-        private static readonly Regex _rateExpression = new Regex(_ratePattern, RegexOptions.CultureInvariant & RegexOptions.IgnoreCase);
+        private static readonly Regex _manyExpression = new Regex(_manyPattern, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+        private static readonly Regex _mapExpression = new Regex(_mapPattern, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+        private static readonly Regex _muchExpression = new Regex(_muchPattern, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+        private static readonly Regex _rateExpression = new Regex(_ratePattern, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Parse the text and returns a command

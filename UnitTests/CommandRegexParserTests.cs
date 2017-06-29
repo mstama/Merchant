@@ -28,6 +28,21 @@ namespace UnitTests
 
         [Fact]
         [Trait("Category", _category)]
+        public void TestManyQueryCommandUpper()
+        {
+            // Arrange
+            string input = "HOW MANY CREDITS IS GLOB PROK IRON ?";
+            // Act
+            var output = _target.Parse(input);
+            // Assert
+            Assert.IsType<ManyQueryCommand>(output);
+            var final = output as ManyQueryCommand;
+            Assert.Equal<string>("GLOB PROK", final.AlienValue);
+            Assert.Equal<string>("IRON", final.Commodity);
+        }
+
+        [Fact]
+        [Trait("Category", _category)]
         public void TestMapCommand()
         {
             // Arrange
@@ -43,6 +58,21 @@ namespace UnitTests
 
         [Fact]
         [Trait("Category", _category)]
+        public void TestMapCommandUpper()
+        {
+            // Arrange
+            string input = "GLOB IS I";
+            // Act
+            var output = _target.Parse(input);
+            // Assert
+            Assert.IsType<MapCommand>(output);
+            var final = output as MapCommand;
+            Assert.Equal<string>("GLOB", final.From);
+            Assert.Equal<string>("I", final.To);
+        }
+
+        [Fact]
+        [Trait("Category", _category)]
         public void TestMuchQueryCommand()
         {
             // Arrange
@@ -53,6 +83,20 @@ namespace UnitTests
             Assert.IsType<MuchQueryCommand>(output);
             var final = output as MuchQueryCommand;
             Assert.Equal<string>("pish tegj glob glob", final.AlienValue);
+        }
+
+        [Fact]
+        [Trait("Category", _category)]
+        public void TestMuchQueryCommandUpper()
+        {
+            // Arrange
+            string input = "HOW MUCH IS PISH TEGJ GLOB GLOB ?";
+            // Act
+            var output = _target.Parse(input);
+            // Assert
+            Assert.IsType<MuchQueryCommand>(output);
+            var final = output as MuchQueryCommand;
+            Assert.Equal<string>("PISH TEGJ GLOB GLOB", final.AlienValue);
         }
 
         [Theory]
@@ -81,6 +125,22 @@ namespace UnitTests
             var final = output as RateCommand;
             Assert.Equal<string>("glob glob", final.Amount);
             Assert.Equal<String>("Silver", final.Commodity);
+            Assert.Equal<int>(34, final.CreditValue);
+        }
+
+        [Fact]
+        [Trait("Category", _category)]
+        public void TestRateCommandUpper()
+        {
+            // Arrange
+            string input = "GLOB GLOB SILVER IS 34 CREDITS";
+            // Act
+            var output = _target.Parse(input);
+            // Assert
+            Assert.IsType<RateCommand>(output);
+            var final = output as RateCommand;
+            Assert.Equal<string>("GLOB GLOB", final.Amount);
+            Assert.Equal<String>("SILVER", final.Commodity);
             Assert.Equal<int>(34, final.CreditValue);
         }
 
