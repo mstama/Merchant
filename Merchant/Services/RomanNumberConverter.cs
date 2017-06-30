@@ -16,7 +16,7 @@ namespace Merchant.Services
         /// <returns></returns>
         public int Convert(string value)
         {
-            if(string.IsNullOrWhiteSpace(value)) throw new RomanDigitException("Empty or space roman number.");
+            if (string.IsNullOrWhiteSpace(value)) { throw new RomanDigitException("Empty or space roman number."); }
 
             var numbers = value.ToCharArray();
             // List of romans that were used to subtract

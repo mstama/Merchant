@@ -142,9 +142,9 @@ namespace Merchant.Models
         /// <returns></returns>
         private void Validate()
         {
-            if (Sequential > 3 || (Sequential > 1 && !Repeat)) throw new RomanDigitException("Invalid roman number: wrong digit repetition.");
-            if (Subtract && Sequential > 1) throw new RomanDigitException("Invalid roman number: digit repetition after subtraction.");
-            if (Previous != null && Order > Previous.Order) throw new RomanDigitException("Invalid roman number: invalid digit order.");
+            if (Sequential > 3 || (Sequential > 1 && !Repeat)) { throw new RomanDigitException("Invalid roman number: wrong digit repetition."); }
+            if (Subtract && Sequential > 1) { throw new RomanDigitException("Invalid roman number: digit repetition after subtraction."); }
+            if (Previous != null && Order > Previous.Order) { throw new RomanDigitException("Invalid roman number: invalid digit order."); }
         }
     }
 }

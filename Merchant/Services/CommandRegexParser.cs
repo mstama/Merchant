@@ -26,7 +26,7 @@ namespace Merchant.Services
         /// <returns></returns>
         public Command Parse(string text)
         {
-            if (string.IsNullOrWhiteSpace(text)) return new NullCommand();
+            if (string.IsNullOrWhiteSpace(text)) { return new NullCommand(); }
 
             if (_mapExpression.IsMatch(text))
             {

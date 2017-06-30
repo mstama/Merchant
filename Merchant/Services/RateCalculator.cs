@@ -19,7 +19,7 @@ namespace Merchant.Services
         /// <param name="rate"></param>
         public void AddRate(string commodity, double rate)
         {
-            if (string.IsNullOrWhiteSpace(commodity)) return;
+            if (string.IsNullOrWhiteSpace(commodity)) { return; }
             _dict.Add(commodity, rate);
         }
 
@@ -31,7 +31,7 @@ namespace Merchant.Services
         /// <returns></returns>
         public double ToCredits(string commodity, int amount)
         {
-            if (!_dict.ContainsKey(commodity)) throw new RateCalculatorException("Commodity not registered!");
+            if (!_dict.ContainsKey(commodity)) { throw new RateCalculatorException("Commodity not registered!"); }
             double rate = _dict[commodity];
             return amount * rate;
         }
