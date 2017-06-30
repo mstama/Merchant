@@ -22,7 +22,7 @@ namespace Merchant
             _parser = new CommandRegexParser();
         }
 
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Init();
             if (args.Length == 0)

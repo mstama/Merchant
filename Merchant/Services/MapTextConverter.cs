@@ -10,7 +10,7 @@ namespace Merchant.Services
     /// </summary>
     public class MapTextConverter : IMapConverter<string, string>
     {
-        private static readonly char[] _separator = new char[] { ' ' };
+        private static readonly char[] _separator = { ' ' };
         private readonly Dictionary<string, string> _dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
