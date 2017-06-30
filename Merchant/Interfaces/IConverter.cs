@@ -3,7 +3,7 @@
     /// <summary>
     /// Interface for the converters
     /// </summary>
-    public interface IConverter<TSource, TTarget>
+    public interface IConverter<in TSource, out TTarget>
     {
         /// <summary>
         /// Executes the conversion
