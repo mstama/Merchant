@@ -12,6 +12,8 @@ namespace Merchant.Models
         /// </summary>
         /// <param name="visitor"></param>
         public override void Accept(ICommandVisitor visitor)
-        { }
+        {
+            // Null object pattern
+        }
     }
 }

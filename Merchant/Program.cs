@@ -31,7 +31,7 @@ namespace Merchant
                 return;
             }
             string filePath = args[0];
-            if (!File.Exists(filePath)) Console.WriteLine("File does not exist!");
+            if (!File.Exists(filePath)) { Console.WriteLine("File does not exist!"); }
             Console.WriteLine("Processing file {0}.", args[0]);
             var lines = File.ReadLines(filePath);
 

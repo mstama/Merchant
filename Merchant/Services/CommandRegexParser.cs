@@ -36,7 +36,7 @@ namespace Merchant.Services
             else if (_manyExpression.IsMatch(text))
             {
                 var result = _manyExpression.Matches(text);
-                if (!"Credits".Equals(result[0].Groups["Target"].Value, StringComparison.OrdinalIgnoreCase)) return new UnknownCommand(text);
+                if (!"Credits".Equals(result[0].Groups["Target"].Value, StringComparison.OrdinalIgnoreCase)) { return new UnknownCommand(text); }
                 return new ManyQueryCommand(result[0].Groups["Commodity"].Value, result[0].Groups["AlienValue"].Value);
             }
             else if (_muchExpression.IsMatch(text))
@@ -47,7 +47,7 @@ namespace Merchant.Services
             else if (_rateExpression.IsMatch(text))
             {
                 var result = _rateExpression.Matches(text);
-                if (!"Credits".Equals(result[0].Groups["Target"].Value, StringComparison.OrdinalIgnoreCase)) return new UnknownCommand(text);
+                if (!"Credits".Equals(result[0].Groups["Target"].Value, StringComparison.OrdinalIgnoreCase)) { return new UnknownCommand(text); }
                 var targetValue = int.Parse(result[0].Groups["TargetValue"].Value);
                 return new RateCommand(result[0].Groups["Commodity"].Value, result[0].Groups["AlienValue"].Value, targetValue);
             }
