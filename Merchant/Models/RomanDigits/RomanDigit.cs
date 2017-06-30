@@ -54,22 +54,22 @@ namespace Merchant.Models
 
         public static bool operator <(RomanDigit a, RomanDigit b)
         {
-            if (b == null) return false;
-            if (a == null) return true;
+            if (b == null) { return false; }
+            if (a == null) { return true; }
             return a.Value < b.Value;
         }
 
         public static bool operator >(RomanDigit a, RomanDigit b)
         {
-            if (a == null) return false;
-            if (b == null) return true;
+            if (a == null) { return false; }
+            if (b == null) { return true; }
             return a.Value > b.Value;
         }
 
         public override bool Equals(object obj)
         {
             var number = obj as RomanDigit;
-            if (number == null) return false;
+            if (number == null) { return false; }
             return Value == number.Value;
         }
 

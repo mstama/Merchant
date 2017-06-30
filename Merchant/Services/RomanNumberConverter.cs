@@ -1,4 +1,5 @@
-﻿using Merchant.Interfaces;
+﻿using Merchant.Exceptions;
+using Merchant.Interfaces;
 using Merchant.Models;
 
 namespace Merchant.Services
@@ -15,9 +16,12 @@ namespace Merchant.Services
         /// <returns></returns>
         public int Convert(string value)
         {
+            if(string.IsNullOrWhiteSpace(value)) throw new RomanDigitException("Empty or space roman number.");
+
             var numbers = value.ToCharArray();
             // List of romans that were used to subtract
             RomanDigit previous = null;
+
             for (int i = 0; i < numbers.Length; i++)
             {
                 var roman = RomanDigitFactory.Create(numbers[i]);
