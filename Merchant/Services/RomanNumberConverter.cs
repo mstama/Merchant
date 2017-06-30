@@ -16,7 +16,6 @@ namespace Merchant.Services
         public int Convert(string value)
         {
             var numbers = value.ToCharArray();
-            var romans = new RomanDigit[numbers.Length];
             // List of romans that were used to subtract
             RomanDigit previous = null;
             for (int i = 0; i < numbers.Length; i++)
