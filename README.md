@@ -1,5 +1,6 @@
 # Merchant
-
+Merchant's Guide To The Galaxy
+[![Build status](https://ci.appveyor.com/api/projects/status/wvnrqn8x2bssyqgp?svg=true)](https://ci.appveyor.com/project/mstama/merchant)
 ### How to build
 
 * [Install](https://www.microsoft.com/net/download/core#/current) .NET Core 1.1 
