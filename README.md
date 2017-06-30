@@ -6,14 +6,14 @@ Merchant's Guide To The Galaxy
 
 ### How to build
 
-* [Install](https://www.microsoft.com/net/download/core#/current) .NET Core 1.1 
+* [Install](https://www.microsoft.com/net/download/core#/current) .NET Core 1.1
 * Restore the packages **(required once)**. In the solution folder, where **Merchant.sln** is, folder execute the followin command:
 
 ```terminal
 dotnet restore
 ```
 
-* In the project folder, where the **Merchant.csproj** is, execute the following command: 
+* In the project folder, where the **Merchant.csproj** is, execute the following command:
 
 ```terminal
 dotnet build -c release
@@ -21,7 +21,7 @@ dotnet build -c release
 
 ### How to run
 
-* Running using the project file. In the project folder, where the **Merchant.csproj** is, execute the following command: 
+* Running using the project file. In the project folder, where the **Merchant.csproj** is, execute the following command:
 
 ```terminal
 dotnet run input.txt
