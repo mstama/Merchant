@@ -2,7 +2,6 @@
 
 Merchant's Guide To The Galaxy
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3641ac07e6a04a4f8d02a0255f05409c)](https://www.codacy.com/app/marcostamashiro/Merchant?utm_source=github.com&utm_medium=referral&utm_content=mstama/Merchant&utm_campaign=badger)
 [![Build status](https://ci.appveyor.com/api/projects/status/wvnrqn8x2bssyqgp?svg=true)](https://ci.appveyor.com/project/mstama/merchant)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3641ac07e6a04a4f8d02a0255f05409c)](https://www.codacy.com/app/marcostamashiro/Merchant?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mstama/Merchant&amp;utm_campaign=Badge_Grade)
 
