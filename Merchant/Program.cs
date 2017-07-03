@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Merchant
 {
-    internal class Program
+    internal static class Program
     {
         private static ICommandParser _parser;
         private static Queue<Command> _retry = new Queue<Command>();
