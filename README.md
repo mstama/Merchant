@@ -4,6 +4,7 @@ Merchant's Guide To The Galaxy
 
 [![Build status](https://ci.appveyor.com/api/projects/status/wvnrqn8x2bssyqgp?svg=true)](https://ci.appveyor.com/project/mstama/merchant)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3641ac07e6a04a4f8d02a0255f05409c)](https://www.codacy.com/app/marcostamashiro/Merchant?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mstama/Merchant&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/mstama/Merchant.svg?branch=master)](https://travis-ci.org/mstama/Merchant)
 
 ### How to build
 
