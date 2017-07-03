@@ -7,6 +7,8 @@ build:
   verbosity: minimal
 test_script:
 - cmd: dotnet test .\UnitTests\UnitTests.csproj
+after_test:
+- cmd: SonarQubeScanner\SonarQube.Scanner.MSBuild.exe end
 skip_commits:
   files:
     - '**/*.md'
