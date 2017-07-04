@@ -1,11 +1,12 @@
 ﻿using Merchant.Exceptions;
+using System;
 
 namespace Merchant.Models
 {
     /// <summary>
     /// Provides Roman Digits representation and associated meta-data
     /// </summary>
-    public abstract class RomanDigit
+    public abstract class RomanDigit : IEquatable<RomanDigit>
     {
         /// <summary>
         /// Contains the subtotal value
@@ -70,7 +71,12 @@ namespace Merchant.Models
         {
             var number = obj as RomanDigit;
             if (number == null) { return false; }
-            return Value == number.Value;
+            return Equals(number);
+        }
+
+        public bool Equals(RomanDigit other)
+        {
+            return Value == other.Value;
         }
 
         public override int GetHashCode()
