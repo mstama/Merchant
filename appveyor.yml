@@ -3,6 +3,7 @@ skip_tags: true
 image: Visual Studio 2017
 before_build:
 - cmd: dotnet restore
+- cmd: choco install "msbuild-sonarqube-runner" -y
 build:
   verbosity: minimal
 test_script:
