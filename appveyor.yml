@@ -1,11 +1,17 @@
 version: 1.0.{build}
 skip_tags: true
 image: Visual Studio 2017
+environment:
+  SonarQube_Token:
+    secure: oKbFWacpunKqn+TgAkz0LPRaFPwkNwFw64l0ICMa+roI0tU1uCZ7+z6eklSqnOdZ
 before_build:
 - cmd: dotnet restore
 - cmd: choco install "msbuild-sonarqube-runner" -y
+- cmd: MSBuild.SonarQube.Runner.exe begin /k:"merchant:master" /n:"Merchant" /v:"1.1.3" /d:sonar.host.url=https://sonarqube.com /d:sonar.login=[SonarToken]
 build:
   verbosity: minimal
+after_build:
+- cmd: MSBuild.SonarQube.Runner.exe end /d:sonar.login=[SonarToken]
 test_script:
 - cmd: dotnet test .\UnitTests\UnitTests.csproj
 after_test:
