@@ -11,7 +11,7 @@ before_build:
 build:
   verbosity: minimal
 after_build:
-- cmd: MSBuild.SonarQube.Runner.exe end /d:sonar.login=%SonarQube_Token%
+- cmd: MSBuild.SonarQube.Runner.exe end /d:sonar.login=%SonarQube_Token% -X
 test_script:
 - cmd: dotnet test .\UnitTests\UnitTests.csproj
 skip_commits:
