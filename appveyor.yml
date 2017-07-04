@@ -14,8 +14,6 @@ after_build:
 - cmd: MSBuild.SonarQube.Runner.exe end /d:sonar.login=[SonarToken]
 test_script:
 - cmd: dotnet test .\UnitTests\UnitTests.csproj
-after_test:
-- cmd: SonarQubeScanner\SonarQube.Scanner.MSBuild.exe end
 skip_commits:
   files:
     - '**/*.md'
