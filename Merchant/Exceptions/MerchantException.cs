@@ -19,5 +19,12 @@ namespace Merchant.Exceptions
         /// <param name="message">Error description</param>
         /// <param name="innerException">Inner exception</param>
         public MerchantException(string message, Exception innerException) : base(message, innerException) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public MerchantException() : base("Merchant Error")
+        {
+        }
     }
 }

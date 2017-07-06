@@ -11,8 +11,8 @@ namespace Merchant.Services
     /// </summary>
     public class CommandParser : ICommandParser
     {
-        private static readonly StringComparison _comparer = StringComparison.OrdinalIgnoreCase;
-        private static char[] _separator = { ' ' };
+        private const StringComparison _comparer = StringComparison.OrdinalIgnoreCase;
+        private static readonly char[] _separator = { ' ' };
 
         /// <summary>
         /// Parse the text and returns a command

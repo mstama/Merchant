@@ -12,7 +12,7 @@ namespace Merchant
     internal static class Program
     {
         private static ICommandParser _parser;
-        private static Queue<Command> _retry = new Queue<Command>();
+        private static readonly Queue<Command> _retry = new Queue<Command>();
         private static ICommandVisitor _visitor;
 
         // Composition root

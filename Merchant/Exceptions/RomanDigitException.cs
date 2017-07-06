@@ -19,5 +19,12 @@ namespace Merchant.Exceptions
         /// <param name="message">Error message</param>
         /// <param name="innerException">Inner exception</param>
         public RomanDigitException(string message, Exception innerException) : base(message, innerException) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public RomanDigitException() : base("Roman Digit Exception")
+        {
+        }
     }
 }
