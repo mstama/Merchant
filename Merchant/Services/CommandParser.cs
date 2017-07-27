@@ -1,4 +1,7 @@
-﻿using Merchant.Extensions;
+﻿// Copyright (c) 2017 Marcos Tamashiro. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using Merchant.Extensions;
 using Merchant.Interfaces;
 using Merchant.Models;
 using System;
